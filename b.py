@@ -143,6 +143,18 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
            skillsconfirm = input("Continue? y/n: ")
            if skillsconfirm == "Y" or skillsconfirm == "y":
               exit()
+           else:
+              print("Reset Skills?")
+              resetconfirm = input("Reset? y/n: ")
+              if resetconfirm == "Y" or resetconfirm == "y":
+                 damagemultpoints = 0
+                 magicmultpoints = 0
+                 rangedmultpoints = 0
+                 healthmultpoints = 0
+                 bartermultpoints = 0
+                 exit()
+              else:
+                 skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
         else:
             skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
     else:
@@ -163,6 +175,18 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
                skillsconfirm = input("Continue? y/n: ")
                if skillsconfirm == "Y" or skillsconfirm == "y":
                   exit()
+               else:
+                  print("Reset Skills?")
+                  resetconfirm = input("Reset? y/n: ")
+                  if resetconfirm == "Y" or resetconfirm == "y":
+                     damagemultpoints = 0
+                     magicmultpoints = 0
+                     rangedmultpoints = 0
+                     healthmultpoints = 0
+                     bartermultpoints = 0
+                     exit()
+                  else:
+                      skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
             else:
                 skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
          else:
@@ -183,8 +207,20 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
                  skillsconfirm = input("Continue? y/n: ")
                  if skillsconfirm == "Y" or skillsconfirm == "y":
                     exit()
+                 else:
+                    print("Reset Skills?")
+                    resetconfirm = input("Reset? y/n: ")
+                    if resetconfirm == "Y" or resetconfirm == "y":
+                       damagemultpoints = 0
+                       magicmultpoints = 0
+                       rangedmultpoints = 0
+                       healthmultpoints = 0
+                       bartermultpoints = 0
+                       exit()
+                    else:
+                       skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
               else:
-                  skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
+                 skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
            else:
               print("\nCancelled! \n")
               skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
@@ -203,8 +239,20 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
                     skillsconfirm = input("Continue? y/n: ")
                     if skillsconfirm == "Y" or skillsconfirm == "y":
                        exit()
+                    else:
+                        print("Reset Skills?")
+                        resetconfirm = input("Reset? y/n: ")
+                        if resetconfirm == "Y" or resetconfirm == "y":
+                           damagemultpoints = 0
+                           magicmultpoints = 0
+                           rangedmultpoints = 0
+                           healthmultpoints = 0
+                           bartermultpoints = 0
+                           exit()
+                        else:
+                           skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
                  else:
-                     skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
+                        skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
               else:
                  print("\nCancelled! \n")
                  skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
@@ -224,20 +272,20 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
                         if skillsconfirm == "Y" or skillsconfirm == "y":
                            exit()
                         else:
-                           if skillsconfirm == "N" or skillsconfirm == "n":
-                              print("Reset Skills?")
-                              resetconfirm = input("Reset? y/n: ")
-                              if resetconfirm == "Y" or resetconfirm == "y":
-                                 damagemultpoints = 0
-                                 magicmultpoints = 0
-                                 rangedmultpoints = 0
-                                 healthmultpoints = 0
-                                 bartermultpoints = 0
-                                 exit()
-                              else:
-                                   if resetconfirm == "N" or resetconfirm == "n":
+                            print("Reset Skills?")
+                            resetconfirm = input("Reset? y/n: ")
+                            if resetconfirm == "Y" or resetconfirm == "y":
+                               damagemultpoints = 0
+                               magicmultpoints = 0
+                               rangedmultpoints = 0
+                               healthmultpoints = 0
+                               bartermultpoints = 0
+                               exit()
+                            else:
+                                skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
+
                      else:
-                         skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
+                        skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
                   else:
                      print("\nCancelled! \n")
                      skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
