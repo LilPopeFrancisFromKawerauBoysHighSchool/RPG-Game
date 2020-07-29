@@ -1,11 +1,14 @@
 #-------------------------------------------------------------Variables-------------------------------------------------Variables
 money = 0
 points = 5
+basehealth = 0
+armor = 0
 damagemult = 0
 magicmult = 0
 rangedmult = 0
 healthmult = 0
 bartermult = 0
+damage = 0
 #-------------------------------------------------------------Startpage-------------------------------------------------Startpage
 def startPage(): #Start of the game...
     print("Press Y to continue...")
@@ -24,19 +27,20 @@ def characterchoice():
     if character == "1":
         charactertype = "Fighter"
         damage = 8
-        health = 20
+        basehealth = 20
         money = 100
+        armor = 2
         points = 5
         print("\nCharacter Class Selected: ", charactertype)
         print("Damage:", damage)
-        print("Health:", health)
+        print("Health:", basehealth)
         print("Coins: ", money)
         confirm = input("Confirm Class? y/n: ")
         if confirm == "Y" or confirm == "y":
             print("\nClass Selected!\n")
             print("Basic Sword Equipped! Damage:", damage)
-            print("Basic Armor Equipped! Damage:", health)
-            skills()
+            print("Basic Armor Equipped! Damage:", armor)
+            skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
         else:
             print("\nCancelled! \n")
             characterchoice()
@@ -45,19 +49,20 @@ def characterchoice():
         if character == "2":
             charactertype = "Mage"
             damage = 12
-            health = 15
+            basehealth = 15
             money = 100
+            armor = 2
             points = 5
             print("\nCharacter Class Selected: ", charactertype)
             print("Damage:", damage)
-            print("Health:", health)
+            print("Health:", basehealth)
             print("Coins: ", money)
             confirm = input("Confirm Class? : ")
             if confirm == "Y" or confirm == "y":
                 print("\nClass Selected!\n")
                 print("Basic Staff Equipped! Damage:", damage)
-                print("Basic Robes Equipped! Damage:", health)
-                skills()
+                print("Basic Robes Equipped! Damage:", armor)
+                skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
             else:
                 print("\nCancelled! \n")
                 characterchoice()
@@ -66,19 +71,20 @@ def characterchoice():
             if character == "3":
                 charactertype = "Archer"
                 damage = 10
-                health = 18
+                basehealth = 18
                 money = 100
+                armor = 2
                 points = 5
                 print("\nCharacter Class Selected: ", charactertype)
                 print("Damage:", damage)
-                print("Health:", health)
+                print("Health:", basehealth)
                 print("Coins: ", money)
                 confirm = input("Confirm Class? : ")
                 if confirm == "Y" or confirm == "y":
                     print("\nClass Selected!\n")
                     print("Basic Bow Equipped! Damage:", damage)
-                    print("Basic Light Armor Equipped! Health:", health)
-                    skills()
+                    print("Basic Light Armor Equipped! Health:", armor)
+                    skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
                 else:
                     print("\nCancelled! \n")
                     characterchoice()
@@ -87,19 +93,20 @@ def characterchoice():
                 if character == "4":
                     charactertype = "Assassin"
                     damage = 18
-                    health = 10
+                    basehealth = 10
                     money = 100
+                    armor = 2
                     points = 5
                     print("\nCharacter Class Selected: ", charactertype)
                     print("Damage:", damage)
-                    print("Health:", health)
+                    print("Health:", basehealth)
                     print("Coins: ", money)
                     confirm = input("Confirm Class? : ")
                     if confirm == "Y" or confirm == "y":
                         print("\nClass Selected!\n")
                         print("Basic Knife Equipped! Damage:", damage)
-                        print("Basic Stealth Armor Equipped! Damage:", health)
-                        skills()
+                        print("Basic Stealth Armor Equipped! Damage:", armor)
+                        skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
                     else:
                         print("\nCancelled! \n")
                         characterchoice()
@@ -108,10 +115,10 @@ def characterchoice():
                     characterchoice()
 #----------------------------------------------------------------------Skill Menu   ------------------------------------Skill Menu
 
-def skills():
+def skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points):
   print('\033[1m' + "\nHere you can spend skill points!"+'\033[0m')
   print("Points Available: ", points)
-  print("Skill Trees: \n1: Damage: Each point multiplies damage by 0.2 \n2: Magic: Each point multiplies magic damage by 0.2 \n3: Ranged: Each point multiplies ranged damage by 0.2\n4: Health: Each point adds 3 health \n5: Bartering: Bartering will be cheaper by 2% for every point")
+  print("Skill Trees: \n1: Damage: Each point multiplies damage by 0.2   Level:",damagemult,"\n2: Magic: Each point multiplies magic damage by 0.2   Level:",magicmult,"\n3: Ranged: Each point multiplies ranged damage by 0.2   Level:",rangedmult,"\n4: Health: Each point adds 3 health    Level:",healthmult,"\n5: Bartering: Bartering will be cheaper by 2% for every point   Level:",bartermult)
 #--------------------------------------------------------------Skill Selection------------------------------------------Skill Selection
   print("Which skill would you like to upgrade?")
   skillselection = input("Skill number to upgrade: ")
@@ -120,53 +127,69 @@ def skills():
     if skillconfirm == "Y" or skillconfirm == "y":
         points -= 1
         damagemult += 1
-        skills()
+        if points == 0:
+           exit()
+        else:
+            skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
     else:
         print("\nCancelled! \n")
-        skills()
+        skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
   else:
       if skillselection == "2":
         skillconfirm = input("Confirm Class? : ")
         if skillconfirm == "Y" or skillconfirm == "y":
             points -= 1
             magicmult += 1
-            skills()
+            if points == 0:
+               exit()
+            else:
+                skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
+
         else:
             print("\nCancelled! \n")
-            skills()
+            skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
       else:
         if skillselection == "3":
            skillconfirm = input("Confirm Class? : ")
            if skillconfirm == "Y" or skillconfirm == "y":
               points -= 1
               rangedmult += 1
-              skills()
+              if points == 0:
+                 exit()
+              else:
+                  skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
            else:
               print("\nCancelled! \n")
-              skills()
+              skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
         else:
            if skillselection == "4":
               skillconfirm = input("Confirm Class? : ")
               if skillconfirm == "Y" or skillconfirm == "y":
                  points -= 1
                  healthmult += 1
-                 skills()
+                 if points == 0:
+                    exit()
+                 else:
+                     skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
               else:
                  print("\nCancelled! \n")
-                 skills()
+                 skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
            else:
                if skillselection == "5":
                   skillconfirm = input("Confirm Class? : ")
                   if skillconfirm == "Y" or skillconfirm == "y":
                      points -= 1
                      bartermult += 1
-                     skills()
+                     if points == 0:
+                        exit()
+                     else:
+                         skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
                   else:
                      print("\nCancelled! \n")
-                     skills()
+                     skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
                else:
                      print("Error")
-                     skills()
+                     skills(damagemult,magicmult,rangedmult,healthmult,bartermult,points)
 
 
 #-----------------------------------------------------------------------------------------------------------------------
