@@ -1,3 +1,4 @@
+import secrets
 #-------------------------------------------------------------Variables-------------------------------------------------Variables
 money = 0
 price = 100
@@ -16,7 +17,9 @@ magicmult = damage + (magicmultpoints * 0.2)
 rangedmult = damage + (rangedmultpoints * 0.2)
 totalhealth = basehealth + (healthmultpoints * 3)
 bartermult = price - (bartermultpoints * 2)
+
 #-------------------------------------------------------------Startpage-------------------------------------------------Startpage
+
 def startpage(): #Start of the game...
     print("Press Y to continue...")
     start = input()
@@ -25,7 +28,9 @@ def startpage(): #Start of the game...
         characterchoice()
     else:
         startpage()
+
 #-----------------------------------------------------------Character Choice Menu---------------------------------------Character Choice Menu
+
 def characterchoice():
     print("Choose your character!")
     print("Options: \n 1. Fighter: Small damage, Melee Damage, Big health! \n 2. Mage: Decent Damage, Magic Damage, Moderate Health! \n 3. Archer: Average Damage, Ranged Damage, Decent Health!  \n 4. Assassin: Crazy Damage, Melee & Ranged Damage, Low Health! \n")
@@ -120,6 +125,7 @@ def characterchoice():
                 else:
                     print("\nNot Valid \n")
                     characterchoice()
+
 #----------------------------------------------------------------------Skill Menu   ------------------------------------Skill Menu
 
 def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints):
@@ -146,7 +152,7 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
             if points == 0:
                skillsconfirm = input("Continue? y/n: ")
                if skillsconfirm == "Y" or skillsconfirm == "y":
-                  exit()
+                  quest()
                else:
                   print("Reset Skills?")
                   resetconfirm = input("Reset? y/n: ")
@@ -180,7 +186,7 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
                 if points == 0:
                    skillsconfirm = input("Continue? y/n: ")
                    if skillsconfirm == "Y" or skillsconfirm == "y":
-                      exit()
+                      quest()
                    else:
                       print("Reset Skills?")
                       resetconfirm = input("Reset? y/n: ")
@@ -214,7 +220,7 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
                   if points == 0:
                      skillsconfirm = input("Continue? y/n: ")
                      if skillsconfirm == "Y" or skillsconfirm == "y":
-                        exit()
+                        quest()
                      else:
                         print("Reset Skills?")
                         resetconfirm = input("Reset? y/n: ")
@@ -248,7 +254,7 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
                      if points == 0:
                         skillsconfirm = input("Continue? y/n: ")
                         if skillsconfirm == "Y" or skillsconfirm == "y":
-                           exit()
+                           quest()
                         else:
                             print("Reset Skills?")
                             resetconfirm = input("Reset? y/n: ")
@@ -282,7 +288,7 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
                          if points == 0:
                             skillsconfirm = input("Continue? y/n: ")
                             if skillsconfirm == "Y" or skillsconfirm == "y":
-                               exit()
+                               quest()
                             else:
                                 print("Reset Skills?")
                                 resetconfirm = input("Reset? y/n: ")
@@ -306,10 +312,96 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
                          print("Error")
                          skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints)
 
+#----------------------------------------------------------------------Random Events/ Story  ---------------------------Random Events/ Story
+
+def skeleton():
+    print("Skeleton")
+def cave():
+    print("Cave")
+def wizard():
+    print("Wizard")
+def village():
+    print("Village")
+def witch():
+    print("Witch")
+def forest():
+    print("Forest")
+def bandits():
+    print("Bandits")
+def chest():
+    print("Chest")
+def troll():
+    print("Troll")
+def bear():
+    print("Bear")
+def spider():
+    print("Spider")
+def dragon():
+    print("Dragon")
+def vampire():
+    print("Vampire")
+def werewolf():
+    print("Werewolf")
+def zombie():
+    print("Zombie")
+def giant():
+    print("Giant")
+
+
+
+
 def quest ():
-    print("Start")
+    quests = ["1","2","3","4","5","8","6","7","8","8","9","10","11","12","13","14","4","4","15","16"]
+    questchoice = secrets.choice(quests)
+    if questchoice == "1":
+       skeleton()
+    else:
+        if questchoice == "2":
+           cave()
+        else:
+            if questchoice == "3":
+               wizard()
+            else:
+                if questchoice == "4":
+                   village()
+                else:
+                    if questchoice == "5":
+                       witch()
+                    else:
+                        if questchoice == "6":
+                           forest()
+                        else:
+                            if questchoice == "7":
+                               bandits()
+                            else:
+                                if questchoice == "8":
+                                   chest()
+                                else:
+                                    if questchoice == "9":
+                                       troll()
+                                    else:
+                                        if questchoice == "10":
+                                           bear()
+                                        else:
+                                            if questchoice == "11":
+                                               spider()
+                                            else:
+                                                if questchoice == "12":
+                                                   dragon()
+                                                else:
+                                                    if questchoice == "13":
+                                                       vampire()
+                                                    else:
+                                                        if questchoice == "14":
+                                                           zombie()
+                                                        else:
+                                                            if questchoice == "15":
+                                                               zombie()
+                                                            else:
+                                                                if questchoice == "16":
+                                                                   giant()
+
 
 #-----------------------------------------------------------------------------------------------------------------------
 print("Welcome to the Game!")
 startpage()
-
