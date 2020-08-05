@@ -315,43 +315,265 @@ def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,ba
 #----------------------------------------------------------------------Random Events/ Story  ---------------------------Random Events/ Story
 
 def skeleton():
-    print("Skeleton")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def cave():
-    print("Cave")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def wizard():
-    print("Wizard")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def village():
-    print("Village")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def witch():
-    print("Witch")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def forest():
-    print("Forest")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def bandits():
-    print("Bandits")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def chest():
-    print("Chest")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def troll():
-    print("Troll")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def bear():
-    print("Bear")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def spider():
-    print("Spider")
+    print("A giant spider \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def dragon():
-    print("Dragon")
+    print("A dragon lands in front of you! \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the dragon like a normal person\nIt seems to only have landed for a rest and soon flies away.")
+       quest()
+    if option == "2":
+       print("You seem to think that you are dragonborn and try to fight the dragon")
+       print("You attack the dragon")
+       print("You deal 0 damage!")
+       print("The dragon has 10000 health")
+       print("Your attack doesn't even leave a scratch")
+       print("The dragon disintegrates you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def vampire():
-    print("Vampire")
+    print("A bat flies by... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You run away from a bat\nIt ignores you and flies away")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to attack the bat")
+       print("You attack the bat")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The bat transforms to a vampire")
+       print("The vampire bites you")
+       print("You turn into a vampire...")
+       print("The sun comes up")
+       print("You die!")
+       print("GAME OVER!")
+       exit()
 def werewolf():
-    print("Werewolf")
+    print("You meet a man as the night falls. \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You run away from the man\nHe does not care.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the man")
+       print("You attack the man")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The man has 100 health")
+       print("The man transforms into a werewolf")
+       print("He rips you to pieces")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
 def zombie():
-    print("Zombie")
+    print("You are ambushed by a group of zombies! The look very weak \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the zombies even though you are much stronger than them...\nThe zombies are much slower than you and you escape with ease.")
+       quest()
+    if option == "2":
+       print("You decide stand your ground fight the zombies")
+       print("You attack the zombies")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The zombies just get demolished by you")
+       print("You escape unscathed")
+       quest()
+
+
 def giant():
-    print("Giant")
+    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       quest()
+    if option == "2":
+       print("For some fucking stupid reason you decide to fight the giant")
+       print("You attack the giant")
+       print("You deal "+magicmult+damagemult+rangedmult+" damage!")
+       print("The giant has 500 health")
+       print("The giant flattens you")
+       print("You die.")
+       print("GAME OVER!")
+       exit()
+def crossroads():
+    print("You reach a fork in the road! \nWhich direction do you go? ")
+    direction = input("Left or Right? : ")
+    if direction == "left" or direction == "Left" or direction == "l" or direction == "L"
+       print("You decide to take the Left Road...")
+       quest()
+    else:
+       print("You opt for the right road...")
+       quest()
 
 
-
+def begin():
+    print("You set off on your journey of adventure!")
 
 def quest ():
-    quests = ["1","2","3","4","5","8","6","7","8","8","9","10","11","12","13","14","4","4","15","16"]
+    quests = ["1","2","3","4","5","8","6","7","8","8","9","10","11","12","13","14","4","4","15","16","17","17","17"]
     questchoice = secrets.choice(quests)
     if questchoice == "1":
        skeleton()
@@ -380,7 +602,7 @@ def quest ():
                                     if questchoice == "9":
                                        troll()
                                     else:
-                                        if questchoice == "10":
+                                        if questchoicee == "10":
                                            bear()
                                         else:
                                             if questchoice == "11":
@@ -400,7 +622,9 @@ def quest ():
                                                             else:
                                                                 if questchoice == "16":
                                                                    giant()
-
+                                                                else:
+                                                                    if questchoice == "17":
+                                                                       crossroads()
 
 #-----------------------------------------------------------------------------------------------------------------------
 print("Welcome to the Game!")
