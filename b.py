@@ -1,4 +1,5 @@
 import secrets
+import pickle
 #-------------------------------------------------------------Variables-------------------------------------------------Variables
 money = 0
 price = 100
@@ -347,36 +348,30 @@ def wizard(basehealth,whack):
     print("You encounter a wizard in his tower \nDo you?\n1. Flee?\n2. Talk?\n3. Fight")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       print("You run away from the tower\nThe wizard doesn't care")
        quest()
     if option == "2":
        print("You climb the tower to meet the wizard")
        print("He is friendly and heals you and increases your maximum health!")
        basehealth += 15
     if option == "3":
-       print("For some fucking stupid reason you decide to fight the giant")
-       print("You attack the giant")
+       print("For some fucking stupid reason you decide to fight the wizard")
+       print("You attack the wizard")
        print("You deal ", whack, " damage!")
-       print("The giant has 500 health")
-       print("The giant flattens you")
+       print("The wizard blocks all damage with a spell")
+       print("He shoots a fireball at you")
        print("You die.")
        print("GAME OVER!")
        exit()
 def village():
-    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("You reach a village \nDo you?\n1. Enter?\n2. Stay away?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       print("You enter the village\nThe townsfolk greet you with open arms!")
        quest()
     if option == "2":
-       print("For some fucking stupid reason you decide to fight the giant")
-       print("You attack the giant")
-       print("You deal ", whack, " damage!")
-       print("The giant has 500 health")
-       print("The giant flattens you")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+       print("You decide to stay away from the village")
+       quest()
 
 
 def witch(whack):
@@ -408,17 +403,17 @@ def forest():
 
 
 def bandits(whack):
-    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("You encounter a group of bandits waiting on the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+       print("You flee from the bandits!\nThey don't care because you are poor")
        quest()
     if option == "2":
-       print("For some fucking stupid reason you decide to fight the giant")
-       print("You attack the giant")
+       print("You decide to fight the group of bandits")
+       print("You attack the bandits")
        print("You deal ", whack, " damage!")
-       print("The giant has 500 health")
-       print("The giant flattens you")
+       print("You can't aim for shit and miss them entirely")
+       print("The bandits slaughter you")
        print("You die.")
        print("GAME OVER!")
        exit()
