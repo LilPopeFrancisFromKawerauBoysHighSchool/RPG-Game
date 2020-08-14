@@ -19,6 +19,7 @@ rangedmult = damage + (rangedmultpoints * 0.2)
 totalhealth = basehealth + (healthmultpoints * 3)
 bartermult = price - (bartermultpoints * 2)
 whack = damagemult + magicmult + rangedmult + damage
+data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
 
 #-------------------------------------------------------------Startpage-------------------------------------------------Startpage
 
