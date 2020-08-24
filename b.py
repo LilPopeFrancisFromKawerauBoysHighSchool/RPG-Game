@@ -21,24 +21,36 @@ bartermult = price - (bartermultpoints * 2)
 whack = damagemult + magicmult + rangedmult + damage
 data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
 
-#-------------------------------------------------------------Startpage-------------------------------------------------Startpage
+# -------------------------------------------------------------Startpage-------------------------------------------------Startpage
 
-def startpage(): #Start of the game...
+def startpage():  # Start of the game...
     print("Press Y to continue...")
     start = input()
     if start == "Y" or start == "y":
         print("Welcome!")
-        characterchoice()
+        loadsave()
     else:
         startpage()
 
-#-----------------------------------------------------------Character Choice Menu---------------------------------------Character Choice Menu
+def loadsave():
+    print("Do you want to load a save game?")
+    save = input()
+    if save == "Y" or save == "y":
+        print("Loading Save.")
+        print("Loading Save..")
+        print("Loading Save...")
+        print("Loaded Save Successfully")
+        characterchoice(charactertype)
+    else:
+        characterchoice(charactertype)
+# -----------------------------------------------------------Character Choice Menu---------------------------------------Character Choice Menu
 
-def characterchoice():
+def characterchoice(charactertype):
     print("Choose your character!")
-    print("Options: \n 1. Fighter: Small damage, Melee Damage, Big health! \n 2. Mage: Decent Damage, Magic Damage, Moderate Health! \n 3. Archer: Average Damage, Ranged Damage, Decent Health!  \n 4. Assassin: Crazy Damage, Melee & Ranged Damage, Low Health! \n")
+    print(
+        "Options: \n 1. Fighter: Small damage, Melee Damage, Big health! \n 2. Mage: Decent Damage, Magic Damage, Moderate Health! \n 3. Archer: Average Damage, Ranged Damage, Decent Health!  \n 4. Assassin: Crazy Damage, Melee & Ranged Damage, Low Health! \n")
     character = input("Character Number: ")
-#----------------------------------------------------------Character Option 1: Fighter----------------------------------Character Option 1: Fighter
+    # ----------------------------------------------------------Character Option 1: Fighter----------------------------------Character Option 1: Fighter
     if character == "1":
         charactertype = "Fighter"
         damage = 8
@@ -55,11 +67,12 @@ def characterchoice():
             print("\nClass Selected!\n")
             print("Basic Sword Equipped! Damage:", damage)
             print("Basic Armor Equipped! Damage:", armor)
-            skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
+            skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points,
+                   damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
         else:
             print("\nCancelled! \n")
-            characterchoice()
-#----------------------------------------------------------Character Option 2: Mage-------------------------------------Character Option 2: Mage
+            characterchoice(charactertype)
+    # ----------------------------------------------------------Character Option 2: Mage-------------------------------------Character Option 2: Mage
     else:
         if character == "2":
             charactertype = "Mage"
@@ -77,11 +90,12 @@ def characterchoice():
                 print("\nClass Selected!\n")
                 print("Basic Staff Equipped! Damage:", damage)
                 print("Basic Robes Equipped! Damage:", armor)
-                skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
+                skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points,
+                       damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
             else:
                 print("\nCancelled! \n")
-                characterchoice()
-#------------------------------------------------------------Character Option 3: Archer---------------------------------Character Option 3: Archer
+                characterchoice(charactertype)
+        # ------------------------------------------------------------Character Option 3: Archer---------------------------------Character Option 3: Archer
         else:
             if character == "3":
                 charactertype = "Archer"
@@ -99,11 +113,12 @@ def characterchoice():
                     print("\nClass Selected!\n")
                     print("Basic Bow Equipped! Damage:", damage)
                     print("Basic Light Armor Equipped! Health:", armor)
-                    skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
+                    skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
+                           points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
                 else:
                     print("\nCancelled! \n")
-                    characterchoice()
-#--------------------------------------------------------------Character Option 4: Assassin-----------------------------Character Option 4: Assassin
+                    characterchoice(charactertype)
+            # --------------------------------------------------------------Character Option 4: Assassin-----------------------------Character Option 4: Assassin
             else:
                 if character == "4":
                     charactertype = "Assassin"
@@ -121,530 +136,577 @@ def characterchoice():
                         print("\nClass Selected!\n")
                         print("Basic Knife Equipped! Damage:", damage)
                         print("Basic Stealth Armor Equipped! Damage:", armor)
-                        skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
+                        skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
+                               points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
                     else:
                         print("\nCancelled! \n")
-                        characterchoice()
+                        characterchoice(charactertype)
                 else:
                     print("\nNot Valid \n")
-                    characterchoice()
+                    characterchoice(charactertype)
 
-#----------------------------------------------------------------------Skill Menu   ------------------------------------Skill Menu
 
-def skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack):
-  resetpoints = (damagemultpoints+magicmultpoints+rangedmultpoints+healthmultpoints+bartermultpoints)
-  if points == 0:
-     quest()
-  else:    
-      print('\033[1m' + "\nHere you can spend skill points!"+'\033[0m')
-      print("Points Available: ", points)
-      print("Skill Trees: \n1: Damage: Each point multiplies damage by 0.2   Level:",damagemultpoints,"\n2: Magic: Each point multiplies magic damage by 0.2   Level:",magicmultpoints,"\n3: Ranged: Each point multiplies ranged damage by 0.2   Level:",rangedmultpoints,"\n4: Health: Each point adds 3 health    Level:",healthmultpoints,"\n5: Bartering: Bartering will be cheaper by 2% for every point   Level:",bartermultpoints)
-    #--------------------------------------------------------------Skill Selection------------------------------------------Skill Selection
-      print("Which skill would you like to upgrade?")
-      skillselection = input("Skill number to upgrade: ")
-      if skillselection == "1":
-         skillconfirm = input("Confirm Upgrade? : ")
-         if skillconfirm == "Y" or skillconfirm == "y":
-            points -= 1
-            damagemultpoints += 1
-            damagemult = damage + (damagemultpoints * 0.2)
-            magicmult = damage + (magicmultpoints * 0.2)
-            rangedmult = damage + (rangedmultpoints * 0.2)
-            totalhealth = basehealth + (healthmultpoints * 3)
-            bartermult = price - (bartermultpoints * 2)
-            if points == 0:
-               skillsconfirm = input("Continue? y/n: ")
-               if skillsconfirm == "Y" or skillsconfirm == "y":
-                  quest()
-               else:
-                  print("Reset Skills?")
-                  resetconfirm = input("Reset? y/n: ")
-                  if resetconfirm == "Y" or resetconfirm == "y":
-                     resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
-                     damagemultpoints = 0
-                     magicmultpoints = 0
-                     rangedmultpoints = 0
-                     healthmultpoints = 0
-                     bartermultpoints = 0
-                     points = points + resetpoints
-                     skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-                  else:
-                     quest()
-            else:
-                skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-         else:
-             print("\nCancelled! \n")
-             skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-      else:
-          if skillselection == "2":
-             skillconfirm = input("Confirm Upgrade? : ")
-             if skillconfirm == "Y" or skillconfirm == "y":
+# ----------------------------------------------------------------------Skill Menu   ------------------------------------Skill Menu
+
+def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points, damagemult,
+           magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack):
+    resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+    if points == 0:
+        quest()
+    else:
+        print('\033[1m' + "\nHere you can spend skill points!" + '\033[0m')
+        print("Points Available: ", points)
+        print("Skill Trees: \n1: Damage: Each point multiplies damage by 0.2   Level:", damagemultpoints,
+              "\n2: Magic: Each point multiplies magic damage by 0.2   Level:", magicmultpoints,
+              "\n3: Ranged: Each point multiplies ranged damage by 0.2   Level:", rangedmultpoints,
+              "\n4: Health: Each point adds 3 health    Level:", healthmultpoints,
+              "\n5: Bartering: Bartering will be cheaper by 2% for every point   Level:", bartermultpoints)
+        # --------------------------------------------------------------Skill Selection------------------------------------------Skill Selection
+        print("Which skill would you like to upgrade?")
+        skillselection = input("Skill number to upgrade: ")
+        if skillselection == "1":
+            skillconfirm = input("Confirm Upgrade? : ")
+            if skillconfirm == "Y" or skillconfirm == "y":
                 points -= 1
-                magicmultpoints += 1
+                damagemultpoints += 1
                 damagemult = damage + (damagemultpoints * 0.2)
                 magicmult = damage + (magicmultpoints * 0.2)
                 rangedmult = damage + (rangedmultpoints * 0.2)
                 totalhealth = basehealth + (healthmultpoints * 3)
                 bartermult = price - (bartermultpoints * 2)
                 if points == 0:
-                   skillsconfirm = input("Continue? y/n: ")
-                   if skillsconfirm == "Y" or skillsconfirm == "y":
-                      quest()
-                   else:
-                      print("Reset Skills?")
-                      resetconfirm = input("Reset? y/n: ")
-                      if resetconfirm == "Y" or resetconfirm == "y":
-                         resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
-                         damagemultpoints = 0
-                         magicmultpoints = 0
-                         rangedmultpoints = 0
-                         healthmultpoints = 0
-                         bartermultpoints = 0
-                         points = points + resetpoints
-                         skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-                      else:
-                          quest()
-                else:
-                    skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-             else:
-                print("\nCancelled! \n")
-                skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-          else:
-            if skillselection == "3":
-               skillconfirm = input("Confirm Upgrade? : ")
-               if skillconfirm == "Y" or skillconfirm == "y":
-                  points -= 1
-                  rangedmultpoints += 1
-                  damagemult = damage + (damagemultpoints * 0.2)
-                  magicmult = damage + (magicmultpoints * 0.2)
-                  rangedmult = damage + (rangedmultpoints * 0.2)
-                  totalhealth = basehealth + (healthmultpoints * 3)
-                  bartermult = price - (bartermultpoints * 2)
-                  if points == 0:
-                     skillsconfirm = input("Continue? y/n: ")
-                     if skillsconfirm == "Y" or skillsconfirm == "y":
+                    skillsconfirm = input("Continue? y/n: ")
+                    if skillsconfirm == "Y" or skillsconfirm == "y":
                         quest()
-                     else:
+                    else:
                         print("Reset Skills?")
                         resetconfirm = input("Reset? y/n: ")
                         if resetconfirm == "Y" or resetconfirm == "y":
-                           resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
-                           damagemultpoints = 0
-                           magicmultpoints = 0
-                           rangedmultpoints = 0
-                           healthmultpoints = 0
-                           bartermultpoints = 0
-                           points = points + resetpoints
-                           skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
+                            resetpoints = (
+                                        damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                            damagemultpoints = 0
+                            magicmultpoints = 0
+                            rangedmultpoints = 0
+                            healthmultpoints = 0
+                            bartermultpoints = 0
+                            points = points + resetpoints
+                            skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                   bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult,
+                                   resetpoints, whack)
                         else:
-                           quest()
-                  else:
-                     skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-               else:
-                  print("\nCancelled! \n")
-                  skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
+                            quest()
+                else:
+                    skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
+                           points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
             else:
-               if skillselection == "4":
-                  skillconfirm = input("Confirm Upgrade? : ")
-                  if skillconfirm == "Y" or skillconfirm == "y":
-                     points -= 1
-                     healthmultpoints += 1
-                     damagemult = damage + (damagemultpoints * 0.2)
-                     magicmult = damage + (magicmultpoints * 0.2)
-                     rangedmult = damage + (rangedmultpoints * 0.2)
-                     totalhealth = basehealth + (healthmultpoints * 3)
-                     bartermult = price - (bartermultpoints * 2)
-                     if points == 0:
+                print("\nCancelled! \n")
+                skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points,
+                       damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
+        else:
+            if skillselection == "2":
+                skillconfirm = input("Confirm Upgrade? : ")
+                if skillconfirm == "Y" or skillconfirm == "y":
+                    points -= 1
+                    magicmultpoints += 1
+                    damagemult = damage + (damagemultpoints * 0.2)
+                    magicmult = damage + (magicmultpoints * 0.2)
+                    rangedmult = damage + (rangedmultpoints * 0.2)
+                    totalhealth = basehealth + (healthmultpoints * 3)
+                    bartermult = price - (bartermultpoints * 2)
+                    if points == 0:
                         skillsconfirm = input("Continue? y/n: ")
                         if skillsconfirm == "Y" or skillsconfirm == "y":
-                           quest()
+                            quest()
                         else:
                             print("Reset Skills?")
                             resetconfirm = input("Reset? y/n: ")
                             if resetconfirm == "Y" or resetconfirm == "y":
-                               resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
-                               damagemultpoints = 0
-                               magicmultpoints = 0
-                               rangedmultpoints = 0
-                               healthmultpoints = 0
-                               bartermultpoints = 0
-                               points = points + resetpoints
-                               skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
+                                resetpoints = (
+                                            damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                                damagemultpoints = 0
+                                magicmultpoints = 0
+                                rangedmultpoints = 0
+                                healthmultpoints = 0
+                                bartermultpoints = 0
+                                points = points + resetpoints
+                                skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                       bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth,
+                                       bartermult, resetpoints, whack)
                             else:
-                               quest()
-                     else:
-                            skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-                  else:
-                     print("\nCancelled! \n")
-                     skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-               else:
-                   if skillselection == "5":
-                      skillconfirm = input("Confirm Upgrade? : ")
-                      if skillconfirm == "Y" or skillconfirm == "y":
-                         points -= 1
-                         bartermultpoints += 1
-                         damagemult = damage + (damagemultpoints * 0.2)
-                         magicmult = damage + (magicmultpoints * 0.2)
-                         rangedmult = damage + (rangedmultpoints * 0.2)
-                         totalhealth = basehealth + (healthmultpoints * 3)
-                         bartermult = price - (bartermultpoints * 2)
-                         if points == 0:
+                                quest()
+                    else:
+                        skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
+                               points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
+                else:
+                    print("\nCancelled! \n")
+                    skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
+                           points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
+            else:
+                if skillselection == "3":
+                    skillconfirm = input("Confirm Upgrade? : ")
+                    if skillconfirm == "Y" or skillconfirm == "y":
+                        points -= 1
+                        rangedmultpoints += 1
+                        damagemult = damage + (damagemultpoints * 0.2)
+                        magicmult = damage + (magicmultpoints * 0.2)
+                        rangedmult = damage + (rangedmultpoints * 0.2)
+                        totalhealth = basehealth + (healthmultpoints * 3)
+                        bartermult = price - (bartermultpoints * 2)
+                        if points == 0:
                             skillsconfirm = input("Continue? y/n: ")
                             if skillsconfirm == "Y" or skillsconfirm == "y":
-                               quest()
+                                quest()
                             else:
                                 print("Reset Skills?")
                                 resetconfirm = input("Reset? y/n: ")
                                 if resetconfirm == "Y" or resetconfirm == "y":
-                                   resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
-                                   damagemultpoints = 0
-                                   magicmultpoints = 0
-                                   rangedmultpoints = 0
-                                   healthmultpoints = 0
-                                   bartermultpoints = 0
-                                   points = points + resetpoints
-                                   skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
+                                    resetpoints = (
+                                                damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                                    damagemultpoints = 0
+                                    magicmultpoints = 0
+                                    rangedmultpoints = 0
+                                    healthmultpoints = 0
+                                    bartermultpoints = 0
+                                    points = points + resetpoints
+                                    skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                           bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth,
+                                           bartermult, resetpoints, whack)
                                 else:
                                     quest()
-                         else:
-                            skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-                      else:
-                         print("\nCancelled! \n")
-                         skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
-                   else:
-                         print("Error")
-                         skills(damagemultpoints,magicmultpoints,rangedmultpoints,healthmultpoints,bartermultpoints,points,damagemult,magicmult,rangedmult,totalhealth,bartermult,resetpoints,whack)
+                        else:
+                            skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                   bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult,
+                                   resetpoints, whack)
+                    else:
+                        print("\nCancelled! \n")
+                        skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
+                               points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
+                else:
+                    if skillselection == "4":
+                        skillconfirm = input("Confirm Upgrade? : ")
+                        if skillconfirm == "Y" or skillconfirm == "y":
+                            points -= 1
+                            healthmultpoints += 1
+                            damagemult = damage + (damagemultpoints * 0.2)
+                            magicmult = damage + (magicmultpoints * 0.2)
+                            rangedmult = damage + (rangedmultpoints * 0.2)
+                            totalhealth = basehealth + (healthmultpoints * 3)
+                            bartermult = price - (bartermultpoints * 2)
+                            if points == 0:
+                                skillsconfirm = input("Continue? y/n: ")
+                                if skillsconfirm == "Y" or skillsconfirm == "y":
+                                    quest()
+                                else:
+                                    print("Reset Skills?")
+                                    resetconfirm = input("Reset? y/n: ")
+                                    if resetconfirm == "Y" or resetconfirm == "y":
+                                        resetpoints = (
+                                                    damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                                        damagemultpoints = 0
+                                        magicmultpoints = 0
+                                        rangedmultpoints = 0
+                                        healthmultpoints = 0
+                                        bartermultpoints = 0
+                                        points = points + resetpoints
+                                        skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                               bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth,
+                                               bartermult, resetpoints, whack)
+                                    else:
+                                        quest()
+                            else:
+                                skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                       bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth,
+                                       bartermult, resetpoints, whack)
+                        else:
+                            print("\nCancelled! \n")
+                            skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                   bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult,
+                                   resetpoints, whack)
+                    else:
+                        if skillselection == "5":
+                            skillconfirm = input("Confirm Upgrade? : ")
+                            if skillconfirm == "Y" or skillconfirm == "y":
+                                points -= 1
+                                bartermultpoints += 1
+                                damagemult = damage + (damagemultpoints * 0.2)
+                                magicmult = damage + (magicmultpoints * 0.2)
+                                rangedmult = damage + (rangedmultpoints * 0.2)
+                                totalhealth = basehealth + (healthmultpoints * 3)
+                                bartermult = price - (bartermultpoints * 2)
+                                if points == 0:
+                                    skillsconfirm = input("Continue? y/n: ")
+                                    if skillsconfirm == "Y" or skillsconfirm == "y":
+                                        quest()
+                                    else:
+                                        print("Reset Skills?")
+                                        resetconfirm = input("Reset? y/n: ")
+                                        if resetconfirm == "Y" or resetconfirm == "y":
+                                            resetpoints = (
+                                                        damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                                            damagemultpoints = 0
+                                            magicmultpoints = 0
+                                            rangedmultpoints = 0
+                                            healthmultpoints = 0
+                                            bartermultpoints = 0
+                                            points = points + resetpoints
+                                            skills(damagemultpoints, magicmultpoints, rangedmultpoints,
+                                                   healthmultpoints, bartermultpoints, points, damagemult, magicmult,
+                                                   rangedmult, totalhealth, bartermult, resetpoints, whack)
+                                        else:
+                                            quest()
+                                else:
+                                    skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                           bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth,
+                                           bartermult, resetpoints, whack)
+                            else:
+                                print("\nCancelled! \n")
+                                skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                       bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth,
+                                       bartermult, resetpoints, whack)
+                        else:
+                            print("Error")
+                            skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
+                                   bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult,
+                                   resetpoints, whack)
 
-#----------------------------------------------------------------------Random Events/ Story  ---------------------------Random Events/ Story
+
+# ----------------------------------------------------------------------Random Events/ Story  ---------------------------Random Events/ Story
 
 def skeleton(whack):
     print("You encounter a horde of undead skeletons... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You run away from the skellies...\nThey try to chase you but cannot keep up")
-       quest()
+        print("You run away from the skellies...\nThey try to chase you but cannot keep up")
+        quest()
     if option == "2":
-       print("You decide to fight the skeletons")
-       print("You attack the skeletons")
-       print("You deal ", whack, " damage!")
-       print("The skeletons fall to bits")
-       print("You win the fight")
-       quest()
+        print("You decide to fight the skeletons")
+        print("You attack the skeletons")
+        print("You deal ", whack, " damage!")
+        print("The skeletons fall to bits")
+        print("You win the fight")
+        quest()
 
 
 def cave():
     print("Your path leads you to a large cave... \nDo you?\n1. Enter?\n2. Flee?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You enter the dark dingy cave!\nScreams echo from beneath...")
-       quest()
+        print("You enter the dark dingy cave!\nScreams echo from beneath...")
+        quest()
     if option == "2":
-       print("You decide not to go into the cave")
-       print("It was probably for the better...")
-       print("You continue on your journey!")
-       quest()
+        print("You decide not to go into the cave")
+        print("It was probably for the better...")
+        print("You continue on your journey!")
+        quest()
 
 
-def wizard(basehealth,whack):
+def wizard(basehealth, whack):
     print("You encounter a wizard in his tower \nDo you?\n1. Flee?\n2. Talk?\n3. Fight")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You run away from the tower\nThe wizard doesn't care")
-       quest()
+        print("You run away from the tower\nThe wizard doesn't care")
+        quest()
     if option == "2":
-       print("You climb the tower to meet the wizard")
-       print("He is friendly and heals you and increases your maximum health!")
-       basehealth += 15
+        print("You climb the tower to meet the wizard")
+        print("He is friendly and heals you and increases your maximum health!")
+        basehealth += 15
     if option == "3":
-       print("For some fucking stupid reason you decide to fight the wizard")
-       print("You attack the wizard")
-       print("You deal ", whack, " damage!")
-       print("The wizard blocks all damage with a spell")
-       print("He shoots a fireball at you")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("For some fucking stupid reason you decide to fight the wizard")
+        print("You attack the wizard")
+        print("You deal ", whack, " damage!")
+        print("The wizard blocks all damage with a spell")
+        print("He shoots a fireball at you")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
+
+
 def village():
     print("You reach a village \nDo you?\n1. Enter?\n2. Stay away?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You enter the village\nThe townsfolk greet you with open arms!")
-       quest()
+        print("You enter the village\nThe townsfolk greet you with open arms!")
+        quest()
     if option == "2":
-       print("You decide to stay away from the village")
-       quest()
+        print("You decide to stay away from the village")
+        quest()
 
 
 def witch(whack):
     print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
-       quest()
+        print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+        quest()
     if option == "2":
-       print("For some fucking stupid reason you decide to fight the giant")
-       print("You attack the giant")
-       print("You deal ", whack, " damage!")
-       print("The giant has 500 health")
-       print("The giant flattens you")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("For some fucking stupid reason you decide to fight the giant")
+        print("You attack the giant")
+        print("You deal ", whack, " damage!")
+        print("The giant has 500 health")
+        print("The giant flattens you")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
 
 
 def forest():
     print("You reach a forest \nDo you?\n1. Enter?\n2. Go around?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You enter the forest\nEerie sounds surround you")
-       quest()
+        print("You enter the forest\nEerie sounds surround you")
+        quest()
     if option == "2":
-       print("You go around because you are a fucking pussy")
-       quest()
+        print("You go around because you are a fucking pussy")
+        quest()
 
 
 def bandits(whack):
     print("You encounter a group of bandits waiting on the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the bandits!\nThey don't care because you are poor")
-       quest()
+        print("You flee from the bandits!\nThey don't care because you are poor")
+        quest()
     if option == "2":
-       print("You decide to fight the group of bandits")
-       print("You attack the bandits")
-       print("You deal ", whack, " damage!")
-       print("You can't aim for shit and miss them entirely")
-       print("The bandits slaughter you")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("You decide to fight the group of bandits")
+        print("You attack the bandits")
+        print("You deal ", whack, " damage!")
+        print("You can't aim for shit and miss them entirely")
+        print("The bandits slaughter you")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
 
 
 def chest():
     print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
-       quest()
+        print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+        quest()
     if option == "2":
-       print("For some fucking stupid reason you decide to fight the giant")
-       print("You attack the giant")
-       print("You deal ", whack, " damage!")
-       print("The giant has 500 health")
-       print("The giant flattens you")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("For some fucking stupid reason you decide to fight the giant")
+        print("You attack the giant")
+        print("You deal ", whack, " damage!")
+        print("The giant has 500 health")
+        print("The giant flattens you")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
 
 
 def troll(whack):
     print("You encounter a troll walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the troll you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
-       quest()
+        print("You flee from the troll you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+        quest()
     if option == "2":
-       print("For some fucking stupid reason you decide to fight the troll")
-       print("You attack the troll")
-       print("You deal ", whack, " damage!")
-       print("The troll has 500 health")
-       print("The troll flattens you")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("For some fucking stupid reason you decide to fight the troll")
+        print("You attack the troll")
+        print("You deal ", whack, " damage!")
+        print("The troll has 500 health")
+        print("The troll flattens you")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
 
 
 def bear(whack):
     print("A bear runs out at you from the forest \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the bear and climb up a tree\nIt cannot follow you into the tree and soon walks away.")
-       quest()
+        print("You flee from the bear and climb up a tree\nIt cannot follow you into the tree and soon walks away.")
+        quest()
     if option == "2":
-       print("For some fucking stupid reason you decide to fight the bear")
-       print("You attack the bear")
-       print("You deal ", whack, " damage!")
-       print("The bear has 500 health")
-       print("The bear bites your head off")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("For some fucking stupid reason you decide to fight the bear")
+        print("You attack the bear")
+        print("You deal ", whack, " damage!")
+        print("The bear has 500 health")
+        print("The bear bites your head off")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
 
 
 def spider(whack):
     print("A giant spider scales down from a tree in front of you \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You run away because you don't like creepy crawlies\nIt tries to shoot spiderwebs at you, It misses.")
-       quest()
+        print("You run away because you don't like creepy crawlies\nIt tries to shoot spiderwebs at you, It misses.")
+        quest()
     if option == "2":
-       print("You decide to stab the spider")
-       print("You stab it")
-       print("You deal ", whack, " damage!")
-       print("The spider has 200 health")
-       print("The spider bites you")
-       print("You are paralyzed")
-       print("The spider eats you")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("You decide to stab the spider")
+        print("You stab it")
+        print("You deal ", whack, " damage!")
+        print("The spider has 200 health")
+        print("The spider bites you")
+        print("You are paralyzed")
+        print("The spider eats you")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
 
 
 def dragon(whack):
     print("A dragon lands in front of you! \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the dragon like a normal person\nIt seems to only have landed for a rest and soon flies away.")
-       quest()
+        print(
+            "You flee from the dragon like a normal person\nIt seems to only have landed for a rest and soon flies away.")
+        quest()
     if option == "2":
-       print("You seem to think that you are dragonborn and try to fight the dragon")
-       print("You attack the dragon")
-       print("You deal 0 damage!")
-       print("The dragon has 10000 health")
-       print("Your attack doesn't even leave a scratch")
-       print("The dragon disintegrates you")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("You seem to think that you are dragonborn and try to fight the dragon")
+        print("You attack the dragon")
+        print("You deal 0 damage!")
+        print("The dragon has 10000 health")
+        print("Your attack doesn't even leave a scratch")
+        print("The dragon disintegrates you")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
 
 
 def vampire(whack):
     print("A bat flies by... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You run away from a bat\nIt ignores you and flies away")
-       quest()
+        print("You run away from a bat\nIt ignores you and flies away")
+        quest()
     if option == "2":
-       print("For some fucking stupid reason you decide to attack the bat")
-       print("You attack the bat")
-       print("You deal ", whack, " damage!")
-       print("The bat transforms to a vampire")
-       print("The vampire bites you")
-       print("You turn into a vampire...")
-       print("The sun comes up")
-       print("You die!")
-       print("GAME OVER!")
-       exit()
+        print("For some fucking stupid reason you decide to attack the bat")
+        print("You attack the bat")
+        print("You deal ", whack, " damage!")
+        print("The bat transforms to a vampire")
+        print("The vampire bites you")
+        print("You turn into a vampire...")
+        print("The sun comes up")
+        print("You die!")
+        print("GAME OVER!")
+        exit()
 
 
 def werewolf(whack):
     print("You meet a man as the night falls. \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You run away from the man\nHe does not care.")
-       quest()
+        print("You run away from the man\nHe does not care.")
+        quest()
     if option == "2":
-       print("For some fucking stupid reason you decide to fight the man")
-       print("You attack the man")
-       print("You deal ", whack, " damage!")
-       print("The man has 100 health")
-       print("The man transforms into a werewolf")
-       print("He rips you to pieces")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("For some fucking stupid reason you decide to fight the man")
+        print("You attack the man")
+        print("You deal ", whack, " damage!")
+        print("The man has 100 health")
+        print("The man transforms into a werewolf")
+        print("He rips you to pieces")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
 
 
 def zombie(whack):
     print("You are ambushed by a group of zombies! The look very weak \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the zombies even though you are much stronger than them...\nThe zombies are much slower than you and you escape with ease.")
-       quest()
+        print(
+            "You flee from the zombies even though you are much stronger than them...\nThe zombies are much slower than you and you escape with ease.")
+        quest()
     if option == "2":
-       print("You decide stand your ground fight the zombies")
-       print("You attack the zombies")
-       print("You deal ", whack, " damage!")
-       print("The zombies just get demolished by you")
-       print("You escape unscathed")
-       quest()
+        print("You decide stand your ground fight the zombies")
+        print("You attack the zombies")
+        print("You deal ", whack, " damage!")
+        print("The zombies just get demolished by you")
+        print("You escape unscathed")
+        quest()
 
 
 def giant(whack):
     print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-       print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
-       quest()
+        print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
+        quest()
     if option == "2":
-       print("For some fucking stupid reason you decide to fight the giant")
-       print("You attack the giant")
-       print("You deal ", whack, " damage!")
-       print("The giant has 500 health")
-       print("The giant flattens you")
-       print("You die.")
-       print("GAME OVER!")
-       exit()
+        print("For some fucking stupid reason you decide to fight the giant")
+        print("You attack the giant")
+        print("You deal ", whack, " damage!")
+        print("The giant has 500 health")
+        print("The giant flattens you")
+        print("You die.")
+        print("GAME OVER!")
+        exit()
 
 
 def crossroads():
     print("You reach a fork in the road! \nWhich direction do you go? ")
     direction = input("Left or Right? : ")
     if direction == "left" or direction == "Left" or direction == "l" or direction == "L":
-       print("You decide to take the Left Road...")
-       quest()
+        print("You decide to take the Left Road...")
+        quest()
     else:
-       print("You opt for the right road...")
-       quest()
+        print("You opt for the right road...")
+        quest()
 
 
 def begin():
     print("You set off on your journey of adventure!")
 
-def quest ():
-    quests = ["1","2","3","4","5","8","6","7","8","8","9","10","11","12","13","14","4","4","15","16","17","17","17"]
+
+def quest():
+    quests = ["1", "2", "3", "4", "5", "8", "6", "7", "8", "8", "9", "10", "11", "12", "13", "14", "4", "4", "15", "16",
+              "17", "17", "17"]
     questchoice = secrets.choice(quests)
     if questchoice == "1":
-       skeleton(whack)
+        skeleton(whack)
     else:
         if questchoice == "2":
-           cave()
+            cave()
         else:
             if questchoice == "3":
-               wizard(basehealth,whack)
+                wizard(basehealth, whack)
             else:
                 if questchoice == "4":
-                   village()
+                    village()
                 else:
                     if questchoice == "5":
-                       witch(whack)
+                        witch(whack)
                     else:
                         if questchoice == "6":
-                           forest()
+                            forest()
                         else:
                             if questchoice == "7":
-                               bandits(whack)
+                                bandits(whack)
                             else:
                                 if questchoice == "8":
-                                   chest()
+                                    chest()
                                 else:
                                     if questchoice == "9":
-                                       troll(whack)
+                                        troll(whack)
                                     else:
                                         if questchoice == "10":
-                                           bear(whack)
+                                            bear(whack)
                                         else:
                                             if questchoice == "11":
-                                               spider(whack)
+                                                spider(whack)
                                             else:
                                                 if questchoice == "12":
-                                                   dragon(whack)
+                                                    dragon(whack)
                                                 else:
                                                     if questchoice == "13":
-                                                       vampire(whack)
+                                                        vampire(whack)
                                                     else:
                                                         if questchoice == "14":
-                                                           zombie(whack)
+                                                            zombie(whack)
                                                         else:
                                                             if questchoice == "15":
-                                                               zombie(whack)
+                                                                zombie(whack)
                                                             else:
                                                                 if questchoice == "16":
-                                                                   giant(whack)
+                                                                    giant(whack)
                                                                 else:
                                                                     if questchoice == "17":
-                                                                       crossroads()
+                                                                        crossroads()
 
-#-----------------------------------------------------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------------------------------------------
 print("Welcome to the Game!")
 startpage()
