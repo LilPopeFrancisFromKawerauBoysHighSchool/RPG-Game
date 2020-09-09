@@ -1,7 +1,8 @@
 import secrets
 import pickle
-#-------------------------------------------------------------Variables-------------------------------------------------Variables
+# ------------------------------------------------------------------------------------------------------------------------Variables
 money = 0
+charactertype = 'null'
 price = 100
 points = 5
 basehealth = 0
@@ -21,7 +22,8 @@ bartermult = price - (bartermultpoints * 2)
 whack = damagemult + magicmult + rangedmult + damage
 data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
 
-# -------------------------------------------------------------Startpage-------------------------------------------------Startpage
+# ------------------------------------------------------------------------------------------------------------------------Start page
+
 
 def startpage():  # Start of the game...
     print("Press Y to continue...")
@@ -31,6 +33,7 @@ def startpage():  # Start of the game...
         loadsave()
     else:
         startpage()
+
 
 def loadsave():
     print("Do you want to load a save game?")
@@ -43,14 +46,15 @@ def loadsave():
         characterchoice(charactertype)
     else:
         characterchoice(charactertype)
-# -----------------------------------------------------------Character Choice Menu---------------------------------------Character Choice Menu
 
+
+# ------------------------------------------------------------------------------------------------------------------------Character Choice Menu
 def characterchoice(charactertype):
     print("Choose your character!")
     print(
         "Options: \n 1. Fighter: Small damage, Melee Damage, Big health! \n 2. Mage: Decent Damage, Magic Damage, Moderate Health! \n 3. Archer: Average Damage, Ranged Damage, Decent Health!  \n 4. Assassin: Crazy Damage, Melee & Ranged Damage, Low Health! \n")
     character = input("Character Number: ")
-    # ----------------------------------------------------------Character Option 1: Fighter----------------------------------Character Option 1: Fighter
+# ------------------------------------------------------------------------------------------------------------------------Character Option 1: Fighter
     if character == "1":
         charactertype = "Fighter"
         damage = 8
@@ -72,7 +76,7 @@ def characterchoice(charactertype):
         else:
             print("\nCancelled! \n")
             characterchoice(charactertype)
-    # ----------------------------------------------------------Character Option 2: Mage-------------------------------------Character Option 2: Mage
+# ------------------------------------------------------------------------------------------------------------------------Character Option 2: Mage
     else:
         if character == "2":
             charactertype = "Mage"
@@ -95,7 +99,7 @@ def characterchoice(charactertype):
             else:
                 print("\nCancelled! \n")
                 characterchoice(charactertype)
-        # ------------------------------------------------------------Character Option 3: Archer---------------------------------Character Option 3: Archer
+# ------------------------------------------------------------------------------------------------------------------------Character Option 3: Archer
         else:
             if character == "3":
                 charactertype = "Archer"
@@ -118,7 +122,7 @@ def characterchoice(charactertype):
                 else:
                     print("\nCancelled! \n")
                     characterchoice(charactertype)
-            # --------------------------------------------------------------Character Option 4: Assassin-----------------------------Character Option 4: Assassin
+# ------------------------------------------------------------------------------------------------------------------------Character Option 4: Assassin
             else:
                 if character == "4":
                     charactertype = "Assassin"
@@ -146,7 +150,7 @@ def characterchoice(charactertype):
                     characterchoice(charactertype)
 
 
-# ----------------------------------------------------------------------Skill Menu   ------------------------------------Skill Menu
+# ----------------------------------------------------------------------------------------------------------------------Skill Menu
 
 def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points, damagemult,
            magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack):
@@ -161,7 +165,7 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
               "\n3: Ranged: Each point multiplies ranged damage by 0.2   Level:", rangedmultpoints,
               "\n4: Health: Each point adds 3 health    Level:", healthmultpoints,
               "\n5: Bartering: Bartering will be cheaper by 2% for every point   Level:", bartermultpoints)
-        # --------------------------------------------------------------Skill Selection------------------------------------------Skill Selection
+# ------------------------------------------------------------------------------------------------------------------------Skill Selection
         print("Which skill would you like to upgrade?")
         skillselection = input("Skill number to upgrade: ")
         if skillselection == "1":
@@ -182,8 +186,7 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                         print("Reset Skills?")
                         resetconfirm = input("Reset? y/n: ")
                         if resetconfirm == "Y" or resetconfirm == "y":
-                            resetpoints = (
-                                        damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                            resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
                             damagemultpoints = 0
                             magicmultpoints = 0
                             rangedmultpoints = 0
@@ -221,8 +224,7 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                             print("Reset Skills?")
                             resetconfirm = input("Reset? y/n: ")
                             if resetconfirm == "Y" or resetconfirm == "y":
-                                resetpoints = (
-                                            damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                                resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
                                 damagemultpoints = 0
                                 magicmultpoints = 0
                                 rangedmultpoints = 0
@@ -260,8 +262,7 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                                 print("Reset Skills?")
                                 resetconfirm = input("Reset? y/n: ")
                                 if resetconfirm == "Y" or resetconfirm == "y":
-                                    resetpoints = (
-                                                damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                                    resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
                                     damagemultpoints = 0
                                     magicmultpoints = 0
                                     rangedmultpoints = 0
@@ -300,8 +301,7 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                                     print("Reset Skills?")
                                     resetconfirm = input("Reset? y/n: ")
                                     if resetconfirm == "Y" or resetconfirm == "y":
-                                        resetpoints = (
-                                                    damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                                        resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
                                         damagemultpoints = 0
                                         magicmultpoints = 0
                                         rangedmultpoints = 0
@@ -341,8 +341,7 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                                         print("Reset Skills?")
                                         resetconfirm = input("Reset? y/n: ")
                                         if resetconfirm == "Y" or resetconfirm == "y":
-                                            resetpoints = (
-                                                        damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
+                                            resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
                                             damagemultpoints = 0
                                             magicmultpoints = 0
                                             rangedmultpoints = 0
@@ -370,8 +369,9 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                                    resetpoints, whack)
 
 
-# ----------------------------------------------------------------------Random Events/ Story  ---------------------------Random Events/ Story
+# ------------------------------------------------------------------------------------------------------------------------Random Events/ Story
 
+# ------------------------------------------------------------------------------------------------------------------------ Skeleton Event
 def skeleton(whack):
     print("You encounter a horde of undead skeletons... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -387,6 +387,7 @@ def skeleton(whack):
         quest()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Cave Event
 def cave():
     print("Your path leads you to a large cave... \nDo you?\n1. Enter?\n2. Flee?\n")
     option = input("Which option do you choose? : ")
@@ -400,6 +401,7 @@ def cave():
         quest()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Wizard
 def wizard(basehealth, whack):
     print("You encounter a wizard in his tower \nDo you?\n1. Flee?\n2. Talk?\n3. Fight")
     option = input("Which option do you choose? : ")
@@ -421,6 +423,7 @@ def wizard(basehealth, whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Village Event
 def village():
     print("You reach a village \nDo you?\n1. Enter?\n2. Stay away?\n")
     option = input("Which option do you choose? : ")
@@ -432,6 +435,7 @@ def village():
         quest()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Witch Event
 def witch(whack):
     print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -449,6 +453,7 @@ def witch(whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Forest Event
 def forest():
     print("You reach a forest \nDo you?\n1. Enter?\n2. Go around?\n")
     option = input("Which option do you choose? : ")
@@ -460,6 +465,7 @@ def forest():
         quest()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Bandits Event
 def bandits(whack):
     print("You encounter a group of bandits waiting on the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -477,6 +483,7 @@ def bandits(whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Chest Event
 def chest():
     print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -494,6 +501,7 @@ def chest():
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Troll Event
 def troll(whack):
     print("You encounter a troll walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -511,6 +519,7 @@ def troll(whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Bear Event
 def bear(whack):
     print("A bear runs out at you from the forest \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -528,6 +537,7 @@ def bear(whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Spider Event
 def spider(whack):
     print("A giant spider scales down from a tree in front of you \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -547,6 +557,7 @@ def spider(whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Dragon Event
 def dragon(whack):
     print("A dragon lands in front of you! \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -566,6 +577,7 @@ def dragon(whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Vampire Event
 def vampire(whack):
     print("A bat flies by... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -585,6 +597,7 @@ def vampire(whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Werewolf Event
 def werewolf(whack):
     print("You meet a man as the night falls. \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -603,6 +616,7 @@ def werewolf(whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Zombie Event
 def zombie(whack):
     print("You are ambushed by a group of zombies! The look very weak \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -619,6 +633,7 @@ def zombie(whack):
         quest()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Giant Event
 def giant(whack):
     print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -636,6 +651,7 @@ def giant(whack):
         exit()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Crossroads Event
 def crossroads():
     print("You reach a fork in the road! \nWhich direction do you go? ")
     direction = input("Left or Right? : ")
@@ -651,6 +667,7 @@ def begin():
     print("You set off on your journey of adventure!")
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Random Event Generator
 def quest():
     quests = ["1", "2", "3", "4", "5", "8", "6", "7", "8", "8", "9", "10", "11", "12", "13", "14", "4", "4", "15", "16",
               "17", "17", "17"]
@@ -707,6 +724,6 @@ def quest():
                                                                         crossroads()
 
 
-# -----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------- Begin
 print("Welcome to the Game!")
 startpage()
