@@ -1,6 +1,6 @@
 import secrets
 import pickle
-# ------------------------------------------------------------------------------------------------------------------------Variables
+# ------------------------------------------------------------------------------------------------------------------------ Variables
 money = 0
 charactertype = 'null'
 price = 100
@@ -22,9 +22,19 @@ bartermult = price - (bartermultpoints * 2)
 whack = damagemult + magicmult + rangedmult + damage
 data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
 
-# ------------------------------------------------------------------------------------------------------------------------Start page
+
+# ------------------------------------------------------------------------------------------------------------------------ Save game
+def save():
+    data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
+    pickle.dump( data, open( "save.p", "wb" ) )
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Save game in quests
+def questsave():
+    data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
+    pickle.dump( data, open( "save.p", "wb" ) )
+
+# ------------------------------------------------------------------------------------------------------------------------ Start page
 def startpage():  # Start of the game...
     print("Press Y to continue...")
     start = input()
@@ -35,6 +45,7 @@ def startpage():  # Start of the game...
         startpage()
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Load game
 def loadsave():
     print("Do you want to load a save game?")
     save = input()
@@ -42,19 +53,20 @@ def loadsave():
         print("Loading Save.")
         print("Loading Save..")
         print("Loading Save...")
+        data = pickle.load( open( "save.p", "rb" ) )
         print("Loaded Save Successfully")
-        characterchoice(charactertype)
+        quest()
     else:
         characterchoice(charactertype)
 
 
-# ------------------------------------------------------------------------------------------------------------------------Character Choice Menu
+# ------------------------------------------------------------------------------------------------------------------------ Character Choice Menu
 def characterchoice(charactertype):
     print("Choose your character!")
     print(
         "Options: \n 1. Fighter: Small damage, Melee Damage, Big health! \n 2. Mage: Decent Damage, Magic Damage, Moderate Health! \n 3. Archer: Average Damage, Ranged Damage, Decent Health!  \n 4. Assassin: Crazy Damage, Melee & Ranged Damage, Low Health! \n")
     character = input("Character Number: ")
-# ------------------------------------------------------------------------------------------------------------------------Character Option 1: Fighter
+# ------------------------------------------------------------------------------------------------------------------------ Character Option 1: Fighter
     if character == "1":
         charactertype = "Fighter"
         damage = 8
@@ -71,12 +83,13 @@ def characterchoice(charactertype):
             print("\nClass Selected!\n")
             print("Basic Sword Equipped! Damage:", damage)
             print("Basic Armor Equipped! Damage:", armor)
+            save()
             skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points,
                    damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
         else:
             print("\nCancelled! \n")
             characterchoice(charactertype)
-# ------------------------------------------------------------------------------------------------------------------------Character Option 2: Mage
+# ------------------------------------------------------------------------------------------------------------------------ Character Option 2: Mage
     else:
         if character == "2":
             charactertype = "Mage"
@@ -94,12 +107,13 @@ def characterchoice(charactertype):
                 print("\nClass Selected!\n")
                 print("Basic Staff Equipped! Damage:", damage)
                 print("Basic Robes Equipped! Damage:", armor)
+                save()
                 skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points,
                        damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
             else:
                 print("\nCancelled! \n")
                 characterchoice(charactertype)
-# ------------------------------------------------------------------------------------------------------------------------Character Option 3: Archer
+# ------------------------------------------------------------------------------------------------------------------------ Character Option 3: Archer
         else:
             if character == "3":
                 charactertype = "Archer"
@@ -117,12 +131,13 @@ def characterchoice(charactertype):
                     print("\nClass Selected!\n")
                     print("Basic Bow Equipped! Damage:", damage)
                     print("Basic Light Armor Equipped! Health:", armor)
+                    save()
                     skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
                            points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
                 else:
                     print("\nCancelled! \n")
                     characterchoice(charactertype)
-# ------------------------------------------------------------------------------------------------------------------------Character Option 4: Assassin
+# ------------------------------------------------------------------------------------------------------------------------ Character Option 4: Assassin
             else:
                 if character == "4":
                     charactertype = "Assassin"
@@ -140,6 +155,7 @@ def characterchoice(charactertype):
                         print("\nClass Selected!\n")
                         print("Basic Knife Equipped! Damage:", damage)
                         print("Basic Stealth Armor Equipped! Damage:", armor)
+                        save()
                         skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
                                points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
                     else:
@@ -150,7 +166,7 @@ def characterchoice(charactertype):
                     characterchoice(charactertype)
 
 
-# ----------------------------------------------------------------------------------------------------------------------Skill Menu
+# ------------------------------------------------------------------------------------------------------------------------ Skill Menu
 
 def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points, damagemult,
            magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack):
@@ -165,24 +181,27 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
               "\n3: Ranged: Each point multiplies ranged damage by 0.2   Level:", rangedmultpoints,
               "\n4: Health: Each point adds 3 health    Level:", healthmultpoints,
               "\n5: Bartering: Bartering will be cheaper by 2% for every point   Level:", bartermultpoints)
-# ------------------------------------------------------------------------------------------------------------------------Skill Selection
+# ------------------------------------------------------------------------------------------------------------------------ Skill Selection
         print("Which skill would you like to upgrade?")
         skillselection = input("Skill number to upgrade: ")
+# ------------------------------------------------------------------------------------------------------------------------ Upgrade Skill 1
         if skillselection == "1":
             skillconfirm = input("Confirm Upgrade? : ")
             if skillconfirm == "Y" or skillconfirm == "y":
                 points -= 1
                 damagemultpoints += 1
-                damagemult = damage + (damagemultpoints * 0.2)
-                magicmult = damage + (magicmultpoints * 0.2)
-                rangedmult = damage + (rangedmultpoints * 0.2)
-                totalhealth = basehealth + (healthmultpoints * 3)
-                bartermult = price - (bartermultpoints * 2)
+                damagemult = damage + (damagemultpoints * 0.2)  # Calculates Melee Damage
+                magicmult = damage + (magicmultpoints * 0.2)  # Calculates Magic Damage
+                rangedmult = damage + (rangedmultpoints * 0.2)  # Calculates Ranged Damage
+                totalhealth = basehealth + (healthmultpoints * 3)  # Calculates Health
+                bartermult = price - (bartermultpoints * 2)  # Calculates Barter Prices
                 if points == 0:
                     skillsconfirm = input("Continue? y/n: ")
                     if skillsconfirm == "Y" or skillsconfirm == "y":
+                        save()
                         quest()
                     else:
+                        # ------------------------------------------------------------------------------------------------ Reset Skills
                         print("Reset Skills?")
                         resetconfirm = input("Reset? y/n: ")
                         if resetconfirm == "Y" or resetconfirm == "y":
@@ -202,10 +221,12 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                     skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
                            points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
             else:
+                # -------------------------------------------------------------------------------------------------------- Cancel
                 print("\nCancelled! \n")
                 skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points,
                        damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
         else:
+            # ------------------------------------------------------------------------------------------------------------ Upgrade Skill 2
             if skillselection == "2":
                 skillconfirm = input("Confirm Upgrade? : ")
                 if skillconfirm == "Y" or skillconfirm == "y":
@@ -219,8 +240,10 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                     if points == 0:
                         skillsconfirm = input("Continue? y/n: ")
                         if skillsconfirm == "Y" or skillsconfirm == "y":
+                            save()
                             quest()
                         else:
+                            # -------------------------------------------------------------------------------------------- Reset Skills
                             print("Reset Skills?")
                             resetconfirm = input("Reset? y/n: ")
                             if resetconfirm == "Y" or resetconfirm == "y":
@@ -240,10 +263,12 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                         skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
                                points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
                 else:
+                    # ---------------------------------------------------------------------------------------------------- Cancel
                     print("\nCancelled! \n")
                     skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
                            points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
             else:
+                # -------------------------------------------------------------------------------------------------------- Upgrade Skill 3
                 if skillselection == "3":
                     skillconfirm = input("Confirm Upgrade? : ")
                     if skillconfirm == "Y" or skillconfirm == "y":
@@ -257,8 +282,10 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                         if points == 0:
                             skillsconfirm = input("Continue? y/n: ")
                             if skillsconfirm == "Y" or skillsconfirm == "y":
+                                save()
                                 quest()
                             else:
+                                # ---------------------------------------------------------------------------------------- Reset Skills
                                 print("Reset Skills?")
                                 resetconfirm = input("Reset? y/n: ")
                                 if resetconfirm == "Y" or resetconfirm == "y":
@@ -279,10 +306,12 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                                    bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult,
                                    resetpoints, whack)
                     else:
+                        # ------------------------------------------------------------------------------------------------ Cancel
                         print("\nCancelled! \n")
                         skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
                                points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
                 else:
+                    # ---------------------------------------------------------------------------------------------------- Upgrade Skill 4
                     if skillselection == "4":
                         skillconfirm = input("Confirm Upgrade? : ")
                         if skillconfirm == "Y" or skillconfirm == "y":
@@ -296,8 +325,10 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                             if points == 0:
                                 skillsconfirm = input("Continue? y/n: ")
                                 if skillsconfirm == "Y" or skillsconfirm == "y":
+                                    save()
                                     quest()
                                 else:
+                                    # ------------------------------------------------------------------------------------ Reset Skills
                                     print("Reset Skills?")
                                     resetconfirm = input("Reset? y/n: ")
                                     if resetconfirm == "Y" or resetconfirm == "y":
@@ -318,11 +349,13 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                                        bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth,
                                        bartermult, resetpoints, whack)
                         else:
+                            # -------------------------------------------------------------------------------------------- Cancel
                             print("\nCancelled! \n")
                             skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
                                    bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult,
                                    resetpoints, whack)
                     else:
+                        # ------------------------------------------------------------------------------------------------ Upgrade Skill 5
                         if skillselection == "5":
                             skillconfirm = input("Confirm Upgrade? : ")
                             if skillconfirm == "Y" or skillconfirm == "y":
@@ -336,8 +369,10 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                                 if points == 0:
                                     skillsconfirm = input("Continue? y/n: ")
                                     if skillsconfirm == "Y" or skillsconfirm == "y":
+                                        save()
                                         quest()
                                     else:
+                                        # -------------------------------------------------------------------------------- Reset Skills
                                         print("Reset Skills?")
                                         resetconfirm = input("Reset? y/n: ")
                                         if resetconfirm == "Y" or resetconfirm == "y":
@@ -358,10 +393,12 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
                                            bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth,
                                            bartermult, resetpoints, whack)
                             else:
+                                # ---------------------------------------------------------------------------------------- Cancel
                                 print("\nCancelled! \n")
                                 skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
                                        bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth,
                                        bartermult, resetpoints, whack)
+# ------------------------------------------------------------------------------------------------------------------------ Error
                         else:
                             print("Error")
                             skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints,
