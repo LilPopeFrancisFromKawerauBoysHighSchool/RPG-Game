@@ -414,6 +414,9 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
 
 
 # ------------------------------------------------------------------------------------------------------------------------Random Events/ Story
+def villageenter(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack, damage, basehealth, money):
+    print("In the village you find a \n1. Blacksmith \n2. General Store \n3. Healer \n4. an Inn")
+
 
 # ------------------------------------------------------------------------------------------------------------------------ Skeleton Event
 def skeleton(whack):
@@ -474,6 +477,7 @@ def village():
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You enter the village\nThe townsfolk greet you with open arms!")
+        villageenter()
         questsave()
     if option == "2":
         print("You decide to stay away from the village")
