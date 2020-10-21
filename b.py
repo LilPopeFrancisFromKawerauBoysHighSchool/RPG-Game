@@ -26,13 +26,20 @@ data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, barte
 # ------------------------------------------------------------------------------------------------------------------------ Save game
 def save():
     data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
-    pickle.dump( data, open( "save.p", "wb" ) )
+    print("Saving Game.")
+    print("Saving Game..")
+    print("Saving Game...")
+    print("Saved Game Successfully!")
+    pickle.dump(data, open("save.p", "wb"))
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Save game in quests
 def questsave():
     data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
-    pickle.dump( data, open( "save.p", "wb" ) )
+    print("Saved Game Successfully!")
+    pickle.dump(data, open("save.p", "wb"))
+    quest()
+
 
 # ------------------------------------------------------------------------------------------------------------------------ Start page
 def startpage():  # Start of the game...
@@ -53,8 +60,8 @@ def loadsave():
         print("Loading Save.")
         print("Loading Save..")
         print("Loading Save...")
-        data = pickle.load( open( "save.p", "rb" ) )
-        print("Loaded Save Successfully")
+        data = pickle.load(open("save.p", "rb"))
+        print("Loaded Save Successfully!")
         quest()
     else:
         characterchoice(charactertype)
@@ -410,45 +417,46 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
 
 # ------------------------------------------------------------------------------------------------------------------------ Skeleton Event
 def skeleton(whack):
-    print("You encounter a horde of undead skeletons... \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nYou encounter a horde of undead skeletons... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You run away from the skellies...\nThey try to chase you but cannot keep up")
-        quest()
+        questsave()
     if option == "2":
         print("You decide to fight the skeletons")
         print("You attack the skeletons")
         print("You deal ", whack, " damage!")
         print("The skeletons fall to bits")
         print("You win the fight")
-        quest()
+        questsave()
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Cave Event
 def cave():
-    print("Your path leads you to a large cave... \nDo you?\n1. Enter?\n2. Flee?\n")
+    print("\nYour path leads you to a large cave... \nDo you?\n1. Enter?\n2. Flee?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You enter the dark dingy cave!\nScreams echo from beneath...")
-        quest()
+        questsave()
     if option == "2":
         print("You decide not to go into the cave")
         print("It was probably for the better...")
         print("You continue on your journey!")
-        quest()
+        questsave()
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Wizard
 def wizard(basehealth, whack):
-    print("You encounter a wizard in his tower \nDo you?\n1. Flee?\n2. Talk?\n3. Fight")
+    print("\nYou encounter a wizard in his tower \nDo you?\n1. Flee?\n2. Talk?\n3. Fight")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You run away from the tower\nThe wizard doesn't care")
-        quest()
+        questsave()
     if option == "2":
         print("You climb the tower to meet the wizard")
         print("He is friendly and heals you and increases your maximum health!")
         basehealth += 15
+        questsave()
     if option == "3":
         print("For some fucking stupid reason you decide to fight the wizard")
         print("You attack the wizard")
@@ -462,23 +470,23 @@ def wizard(basehealth, whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Village Event
 def village():
-    print("You reach a village \nDo you?\n1. Enter?\n2. Stay away?\n")
+    print("\nYou reach a village \nDo you?\n1. Enter?\n2. Stay away?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You enter the village\nThe townsfolk greet you with open arms!")
-        quest()
+        questsave()
     if option == "2":
         print("You decide to stay away from the village")
-        quest()
+        questsave()
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Witch Event
 def witch(whack):
-    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nYou encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
-        quest()
+        questsave()
     if option == "2":
         print("For some fucking stupid reason you decide to fight the giant")
         print("You attack the giant")
@@ -492,23 +500,23 @@ def witch(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Forest Event
 def forest():
-    print("You reach a forest \nDo you?\n1. Enter?\n2. Go around?\n")
+    print("\nYou reach a forest \nDo you?\n1. Enter?\n2. Go around?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You enter the forest\nEerie sounds surround you")
-        quest()
+        questsave()
     if option == "2":
         print("You go around because you are a fucking pussy")
-        quest()
+        questsave()
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Bandits Event
 def bandits(whack):
-    print("You encounter a group of bandits waiting on the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nYou encounter a group of bandits waiting on the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You flee from the bandits!\nThey don't care because you are poor")
-        quest()
+        questsave()
     if option == "2":
         print("You decide to fight the group of bandits")
         print("You attack the bandits")
@@ -522,17 +530,17 @@ def bandits(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Chest Event
 def chest():
-    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nYou find a chest on the side of the road... \nDo you?\n1. Open?\n2. Ignore?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-        print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
-        quest()
+        print("You open the chest!\nIt does not see you jump into the bushes and walks away.")
+        questsave()
     if option == "2":
-        print("For some fucking stupid reason you decide to fight the giant")
-        print("You attack the giant")
+        print("You open the chest!")
+        print("A goblin jumps out!")
         print("You deal ", whack, " damage!")
-        print("The giant has 500 health")
-        print("The giant flattens you")
+        print("The goblin is too small!")
+        print("The goblin stabs you!")
         print("You die.")
         print("GAME OVER!")
         exit()
@@ -540,11 +548,11 @@ def chest():
 
 # ------------------------------------------------------------------------------------------------------------------------ Troll Event
 def troll(whack):
-    print("You encounter a troll walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nYou encounter a troll walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You flee from the troll you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
-        quest()
+        questsave()
     if option == "2":
         print("For some fucking stupid reason you decide to fight the troll")
         print("You attack the troll")
@@ -558,11 +566,11 @@ def troll(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Bear Event
 def bear(whack):
-    print("A bear runs out at you from the forest \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nA bear runs out at you from the forest \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You flee from the bear and climb up a tree\nIt cannot follow you into the tree and soon walks away.")
-        quest()
+        questsave()
     if option == "2":
         print("For some fucking stupid reason you decide to fight the bear")
         print("You attack the bear")
@@ -576,11 +584,11 @@ def bear(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Spider Event
 def spider(whack):
-    print("A giant spider scales down from a tree in front of you \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nA giant spider scales down from a tree in front of you \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You run away because you don't like creepy crawlies\nIt tries to shoot spiderwebs at you, It misses.")
-        quest()
+        questsave()
     if option == "2":
         print("You decide to stab the spider")
         print("You stab it")
@@ -596,12 +604,11 @@ def spider(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Dragon Event
 def dragon(whack):
-    print("A dragon lands in front of you! \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nA dragon lands in front of you! \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
-        print(
-            "You flee from the dragon like a normal person\nIt seems to only have landed for a rest and soon flies away.")
-        quest()
+        print("You flee from the dragon like a normal person\nIt seems to only have landed for a rest and soon flies away.")
+        questsave()
     if option == "2":
         print("You seem to think that you are dragonborn and try to fight the dragon")
         print("You attack the dragon")
@@ -616,11 +623,11 @@ def dragon(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Vampire Event
 def vampire(whack):
-    print("A bat flies by... \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nA bat flies by... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You run away from a bat\nIt ignores you and flies away")
-        quest()
+        questsave()
     if option == "2":
         print("For some fucking stupid reason you decide to attack the bat")
         print("You attack the bat")
@@ -636,11 +643,11 @@ def vampire(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Werewolf Event
 def werewolf(whack):
-    print("You meet a man as the night falls. \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nYou meet a man as the night falls. \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You run away from the man\nHe does not care.")
-        quest()
+        questsave()
     if option == "2":
         print("For some fucking stupid reason you decide to fight the man")
         print("You attack the man")
@@ -655,28 +662,28 @@ def werewolf(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Zombie Event
 def zombie(whack):
-    print("You are ambushed by a group of zombies! The look very weak \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nYou are ambushed by a group of zombies! The look very weak \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print(
             "You flee from the zombies even though you are much stronger than them...\nThe zombies are much slower than you and you escape with ease.")
-        quest()
+        questsave()
     if option == "2":
         print("You decide stand your ground fight the zombies")
         print("You attack the zombies")
         print("You deal ", whack, " damage!")
         print("The zombies just get demolished by you")
         print("You escape unscathed")
-        quest()
+        questsave()
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Giant Event
 def giant(whack):
-    print("You encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
+    print("\nYou encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You flee from the giant you fucking pussy!\nIt does not see you jump into the bushes and walks away.")
-        quest()
+        questsave()
     if option == "2":
         print("For some fucking stupid reason you decide to fight the giant")
         print("You attack the giant")
@@ -690,14 +697,14 @@ def giant(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Crossroads Event
 def crossroads():
-    print("You reach a fork in the road! \nWhich direction do you go? ")
+    print("\nYou reach a fork in the road! \nWhich direction do you go? ")
     direction = input("Left or Right? : ")
     if direction == "left" or direction == "Left" or direction == "l" or direction == "L":
         print("You decide to take the Left Road...")
-        quest()
+        questsave()
     else:
         print("You opt for the right road...")
-        quest()
+        questsave()
 
 
 def begin():
