@@ -3,7 +3,9 @@ import pickle
 # ------------------------------------------------------------------------------------------------------------------------ Variables
 money = 0
 charactertype = 'null'
-questchoice = '0'
+name = 'null'
+questchoice = '1'
+questlevel = questchoice
 price = 100
 points = 5
 basehealth = 0
@@ -21,40 +23,26 @@ rangedmult = damage + (rangedmultpoints * 0.2)
 totalhealth = basehealth + (healthmultpoints * 3)
 bartermult = price - (bartermultpoints * 2)
 whack = damagemult + magicmult + rangedmult + damage
-data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
+data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money, questchoice, questlevel}
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Save game
 def save():
-    data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
-    print("Saving Game.")
-    print("Saving Game..")
-    print("Saving Game...")
+    data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money, questchoice, questlevel}
     print("Saved Game Successfully!")
     pickle.dump(data, open("save.p", "wb"))
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Save game in quests
 def questsave():
-    data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money}
+    data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money, questchoice, questlevel}
     print("Saved Game Successfully!")
     pickle.dump(data, open("save.p", "wb"))
     quest()
 
 
-# ------------------------------------------------------------------------------------------------------------------------ Start page
-def startpage():  # Start of the game...
-    print("Press Y to continue...")
-    start = input()
-    if start == "Y" or start == "y":
-        print("Welcome!")
-        loadsave()
-    else:
-        startpage()
-
-
 # ------------------------------------------------------------------------------------------------------------------------ Load game
-def loadsave():
+def loadsave(questlevel):
     print("Do you want to load a save game?")
     save = input()
     if save == "Y" or save == "y":
@@ -63,13 +51,59 @@ def loadsave():
         print("Loading Save...")
         data = pickle.load(open("save.p", "rb"))
         print("Loaded Save Successfully!")
-        quest()
+        if questlevel == "1":
+            skeleton(whack)
+        elif questlevel == "2":
+            cave()
+        elif questlevel == "3":
+            wizard(basehealth, whack)
+        elif questlevel == "4":
+            village()
+        elif questlevel == "5":
+            witch(whack)
+        elif questlevel == "6":
+            forest()
+        elif questlevel == "7":
+            bandits(whack)
+        elif questlevel == "8":
+            chest()
+        elif questlevel == "9":
+            troll(whack)
+        elif questlevel == "10":
+            bear(whack)
+        elif questlevel == "11":
+            spider(whack)
+        elif questlevel == "12":
+            dragon(whack)
+        elif questlevel == "13":
+            vampire(whack)
+        elif questlevel == "14":
+            zombie(whack)
+        elif questlevel == "15":
+            werewolf(whack)
+        elif questlevel == "16":
+            giant(whack)
+        elif questlevel == "17":
+            crossroads()
     else:
         characterchoice(charactertype)
 
 
+# ------------------------------------------------------------------------------------------------------------------------ Start page
+def startpage():  # Start of the game...
+    print("Press Y to continue...")
+    start = input()
+    if start == "Y" or start == "y":
+        print("Welcome!")
+        loadsave(questchoice)
+    else:
+        startpage()
+
+
 # ------------------------------------------------------------------------------------------------------------------------ Character Choice Menu
 def characterchoice(charactertype):
+    print("What will you character be called?")
+    name = input("Character Name: ")
     print("Choose your character!")
     print(
         "Options: \n 1. Fighter: Small damage, Melee Damage, Big health! \n 2. Mage: Decent Damage, Magic Damage, Moderate Health! \n 3. Archer: Average Damage, Ranged Damage, Decent Health!  \n 4. Assassin: Crazy Damage, Melee & Ranged Damage, Low Health! \n")
@@ -416,6 +450,7 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
 
 # ------------------------------------------------------------------------------------------------------------------------Random Events/ Story
 def villageenter(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack, damage, basehealth, money):
+    save()
     print("In the village you find a \n1. Blacksmith \n2. General Store \n3. Healer \n4. an Inn")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -434,6 +469,7 @@ def villageenter(damagemultpoints, magicmultpoints, rangedmultpoints, healthmult
 
 # ------------------------------------------------------------------------------------------------------------------------ Skeleton Event
 def skeleton(whack):
+    save()
     print("\nYou encounter a horde of undead skeletons... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -450,6 +486,7 @@ def skeleton(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Cave Event
 def cave():
+    save()
     print("\nYour path leads you to a large cave... \nDo you?\n1. Enter?\n2. Flee?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -464,6 +501,7 @@ def cave():
 
 # ------------------------------------------------------------------------------------------------------------------------ Wizard
 def wizard(basehealth, whack):
+    save()
     print("\nYou encounter a wizard in his tower \nDo you?\n1. Flee?\n2. Talk?\n3. Fight")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -487,6 +525,7 @@ def wizard(basehealth, whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Village Event
 def village():
+    save()
     print("\nYou reach a village \nDo you?\n1. Enter?\n2. Stay away?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -500,6 +539,7 @@ def village():
 
 # ------------------------------------------------------------------------------------------------------------------------ Witch Event
 def witch(whack):
+    save()
     print("\nYou encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -518,6 +558,7 @@ def witch(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Forest Event
 def forest():
+    save()
     print("\nYou reach a forest \nDo you?\n1. Enter?\n2. Go around?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -530,6 +571,7 @@ def forest():
 
 # ------------------------------------------------------------------------------------------------------------------------ Bandits Event
 def bandits(whack):
+    save()
     print("\nYou encounter a group of bandits waiting on the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -548,6 +590,7 @@ def bandits(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Chest Event
 def chest():
+    save()
     print("\nYou find a chest on the side of the road... \nDo you?\n1. Open?\n2. Ignore?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -566,6 +609,7 @@ def chest():
 
 # ------------------------------------------------------------------------------------------------------------------------ Troll Event
 def troll(whack):
+    save()
     print("\nYou encounter a troll walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -584,6 +628,7 @@ def troll(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Bear Event
 def bear(whack):
+    save()
     print("\nA bear runs out at you from the forest \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -602,6 +647,7 @@ def bear(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Spider Event
 def spider(whack):
+    save()
     print("\nA giant spider scales down from a tree in front of you \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -622,6 +668,7 @@ def spider(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Dragon Event
 def dragon(whack):
+    save()
     print("\nA dragon lands in front of you! \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -641,6 +688,7 @@ def dragon(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Vampire Event
 def vampire(whack):
+    save()
     print("\nA bat flies by... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -661,6 +709,7 @@ def vampire(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Werewolf Event
 def werewolf(whack):
+    save()
     print("\nYou meet a man as the night falls. \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -680,6 +729,7 @@ def werewolf(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Zombie Event
 def zombie(whack):
+    save()
     print("\nYou are ambushed by a group of zombies! The look very weak \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -697,6 +747,7 @@ def zombie(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Giant Event
 def giant(whack):
+    save()
     print("\nYou encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
     if option == "1":
@@ -715,6 +766,7 @@ def giant(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Crossroads Event
 def crossroads():
+    save()
     print("\nYou reach a fork in the road! \nWhich direction do you go? ")
     direction = input("Left or Right? : ")
     if direction == "left" or direction == "Left" or direction == "l" or direction == "L":
@@ -727,6 +779,7 @@ def crossroads():
 
 def begin():
     print("You set off on your journey of adventure!")
+    questsave()
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Random Event Generator
@@ -734,6 +787,7 @@ def quest():
     quests = ["1", "2", "3", "4", "5", "8", "6", "7", "8", "8", "9", "10", "11", "12", "13", "14", "4", "4", "15", "16",
               "17", "17", "17"]
     questchoice = secrets.choice(quests)
+    questlevel = questchoice
     if questchoice == "1":
         skeleton(whack)
     else:
@@ -777,7 +831,7 @@ def quest():
                                                             zombie(whack)
                                                         else:
                                                             if questchoice == "15":
-                                                                zombie(whack)
+                                                                werewolf(whack)
                                                             else:
                                                                 if questchoice == "16":
                                                                     giant(whack)
