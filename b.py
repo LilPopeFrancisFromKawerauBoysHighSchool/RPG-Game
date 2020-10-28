@@ -3,6 +3,7 @@ import pickle
 # ------------------------------------------------------------------------------------------------------------------------ Variables
 money = 0
 charactertype = 'null'
+questchoice = '0'
 price = 100
 points = 5
 basehealth = 0
@@ -416,6 +417,19 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
 # ------------------------------------------------------------------------------------------------------------------------Random Events/ Story
 def villageenter(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack, damage, basehealth, money):
     print("In the village you find a \n1. Blacksmith \n2. General Store \n3. Healer \n4. an Inn")
+    option = input("Which option do you choose? : ")
+    if option == "1":
+        print("You visit the Village Blacksmith")
+        questsave()
+    if option == "2":
+        print("You enter the Village General Store")
+        questsave()
+    if option == "3":
+        print("You decide to visit the Village Healer")
+        questsave()
+    if option == "4":
+        print("You enter the Inn")
+        questsave()
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Skeleton Event
@@ -477,7 +491,7 @@ def village():
     option = input("Which option do you choose? : ")
     if option == "1":
         print("You enter the village\nThe townsfolk greet you with open arms!")
-        villageenter()
+        villageenter(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack, damage, basehealth, money)
         questsave()
     if option == "2":
         print("You decide to stay away from the village")
