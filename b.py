@@ -132,84 +132,80 @@ def characterchoice(charactertype):
             print("\nCancelled! \n")
             characterchoice(charactertype)
 # ------------------------------------------------------------------------------------------------------------------------ Character Option 2: Mage
-    else:
-        if character == "2":
-            charactertype = "Mage"
-            damage = 12
-            basehealth = 15
-            money = 100
-            armor = 2
-            points = 5
-            print("\nCharacter Class Selected: ", charactertype)
-            print("Damage:", damage)
-            print("Health:", basehealth)
-            print("Coins: ", money)
-            confirm = input("Confirm Class? : ")
-            if confirm == "Y" or confirm == "y":
-                print("\nClass Selected!\n")
-                print("Basic Staff Equipped! Damage:", damage)
-                print("Basic Robes Equipped! Damage:", armor)
-                save()
-                skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points,
-                       damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
-            else:
-                print("\nCancelled! \n")
-                characterchoice(charactertype)
-# ------------------------------------------------------------------------------------------------------------------------ Character Option 3: Archer
+    if character == "2":
+        charactertype = "Mage"
+        damage = 12
+        basehealth = 15
+        money = 100
+        armor = 2
+        points = 5
+        print("\nCharacter Class Selected: ", charactertype)
+        print("Damage:", damage)
+        print("Health:", basehealth)
+        print("Coins: ", money)
+        confirm = input("Confirm Class? : ")
+        if confirm == "Y" or confirm == "y":
+            print("\nClass Selected!\n")
+            print("Basic Staff Equipped! Damage:", damage)
+            print("Basic Robes Equipped! Damage:", armor)
+            save()
+            skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points,
+                   damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
         else:
-            if character == "3":
-                charactertype = "Archer"
-                damage = 10
-                basehealth = 18
-                money = 100
-                armor = 2
-                points = 5
-                print("\nCharacter Class Selected: ", charactertype)
-                print("Damage:", damage)
-                print("Health:", basehealth)
-                print("Coins: ", money)
-                confirm = input("Confirm Class? : ")
-                if confirm == "Y" or confirm == "y":
-                    print("\nClass Selected!\n")
-                    print("Basic Bow Equipped! Damage:", damage)
-                    print("Basic Light Armor Equipped! Health:", armor)
-                    save()
-                    skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
-                           points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
-                else:
-                    print("\nCancelled! \n")
-                    characterchoice(charactertype)
+            print("\nCancelled! \n")
+            characterchoice(charactertype)
+# ------------------------------------------------------------------------------------------------------------------------ Character Option 3: Archer
+    if character == "3":
+        charactertype = "Archer"
+        damage = 10
+        basehealth = 18
+        money = 100
+        armor = 2
+        points = 5
+        print("\nCharacter Class Selected: ", charactertype)
+        print("Damage:", damage)
+        print("Health:", basehealth)
+        print("Coins: ", money)
+        confirm = input("Confirm Class? : ")
+        if confirm == "Y" or confirm == "y":
+            print("\nClass Selected!\n")
+            print("Basic Bow Equipped! Damage:", damage)
+            print("Basic Light Armor Equipped! Health:", armor)
+            save()
+            skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
+                   points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
+        else:
+            print("\nCancelled! \n")
+            characterchoice(charactertype)
 # ------------------------------------------------------------------------------------------------------------------------ Character Option 4: Assassin
-            else:
-                if character == "4":
-                    charactertype = "Assassin"
-                    damage = 18
-                    basehealth = 10
-                    money = 100
-                    armor = 2
-                    points = 5
-                    print("\nCharacter Class Selected: ", charactertype)
-                    print("Damage:", damage)
-                    print("Health:", basehealth)
-                    print("Coins: ", money)
-                    confirm = input("Confirm Class? : ")
-                    if confirm == "Y" or confirm == "y":
-                        print("\nClass Selected!\n")
-                        print("Basic Knife Equipped! Damage:", damage)
-                        print("Basic Stealth Armor Equipped! Damage:", armor)
-                        save()
-                        skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
-                               points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
-                    else:
-                        print("\nCancelled! \n")
-                        characterchoice(charactertype)
-                else:
-                    print("\nNot Valid \n")
-                    characterchoice(charactertype)
+    if character == "4":
+        charactertype = "Assassin"
+        damage = 18
+        basehealth = 10
+        money = 100
+        armor = 2
+        points = 5
+        print("\nCharacter Class Selected: ", charactertype)
+        print("Damage:", damage)
+        print("Health:", basehealth)
+        print("Coins: ", money)
+        confirm = input("Confirm Class? : ")
+        if confirm == "Y" or confirm == "y":
+            print("\nClass Selected!\n")
+            print("Basic Knife Equipped! Damage:", damage)
+            print("Basic Stealth Armor Equipped! Damage:", armor)
+            save()
+            skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints,
+                   points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack)
+        else:
+            print("\nCancelled! \n")
+            characterchoice(charactertype)
+    else:
+        print("\nNot Valid \n")
+        characterchoice(charactertype)
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Skill Menu
-
 def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points, damagemult,
            magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack):
     resetpoints = (damagemultpoints + magicmultpoints + rangedmultpoints + healthmultpoints + bartermultpoints)
@@ -790,54 +786,38 @@ def quest():
     questlevel = questchoice
     if questchoice == "1":
         skeleton(whack)
-    else:
-        if questchoice == "2":
-            cave()
-        else:
-            if questchoice == "3":
-                wizard(basehealth, whack)
-            else:
-                if questchoice == "4":
-                    village()
-                else:
-                    if questchoice == "5":
-                        witch(whack)
-                    else:
-                        if questchoice == "6":
-                            forest()
-                        else:
-                            if questchoice == "7":
-                                bandits(whack)
-                            else:
-                                if questchoice == "8":
-                                    chest()
-                                else:
-                                    if questchoice == "9":
-                                        troll(whack)
-                                    else:
-                                        if questchoice == "10":
-                                            bear(whack)
-                                        else:
-                                            if questchoice == "11":
-                                                spider(whack)
-                                            else:
-                                                if questchoice == "12":
-                                                    dragon(whack)
-                                                else:
-                                                    if questchoice == "13":
-                                                        vampire(whack)
-                                                    else:
-                                                        if questchoice == "14":
-                                                            zombie(whack)
-                                                        else:
-                                                            if questchoice == "15":
-                                                                werewolf(whack)
-                                                            else:
-                                                                if questchoice == "16":
-                                                                    giant(whack)
-                                                                else:
-                                                                    if questchoice == "17":
-                                                                        crossroads()
+    elif questchoice == "2":
+        cave()
+    elif questchoice == "3":
+        wizard(basehealth, whack)
+    elif questchoice == "4":
+        village()
+    elif questchoice == "5":
+        witch(whack)
+    elif questchoice == "6":
+        forest()
+    elif questchoice == "7":
+        bandits(whack)
+    elif questchoice == "8":
+        chest()
+    elif questchoice == "9":
+        troll(whack)
+    elif questchoice == "10":
+        bear(whack)
+    elif questchoice == "11":
+        spider(whack)
+    elif questchoice == "12":
+        dragon(whack)
+    elif questchoice == "13":
+        vampire(whack)
+    elif questchoice == "14":
+        zombie(whack)
+    elif questchoice == "15":
+        werewolf(whack)
+    elif questchoice == "16":
+        giant(whack)
+    elif questchoice == "17":
+        crossroads()
 
 
 # ----------------------------------------------------------------------------------------------------------------------- Begin
