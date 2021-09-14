@@ -1,8 +1,11 @@
 import secrets
 import pickle
 import random
+
+
 # ------------------------------------------------------------------------------------------------------------------------ Variables
 money = 0
+level = 0
 charactertype = 'null'
 name = 'null'
 questchoice = '1'
@@ -24,23 +27,38 @@ rangedmult = damage + (rangedmultpoints * 0.2)
 totalhealth = basehealth + (healthmultpoints * 3)
 bartermult = price - (bartermultpoints * 2)
 whack = damagemult + magicmult + rangedmult + damage
-data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money, questchoice, questlevel}
+data = {level, whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money, questchoice, questlevel}
+
 
 # ------------------------------------------------------------------------------------------------------------------------ Enemy Health
-skeletonhealth = random.randint(0, 9)
-gianthealth = random.randint(0, 9)
-wizardhealth = random.randint(0, 9)
-witchhealth = random.randint(0, 9)
-bandithealth = random.randint(0, 9)
-trollhealth = random.randint(0, 9)
-bearhealth = random.randint(0, 9)
-spiderhealth = random.randint(0, 9)
-dragonhealth = random.randint(0, 9)
-vampirehealth = random.randint(0, 9)
-zombiehealth = random.randint(0, 9)
-werewolfhealth = random.randint(0, 9)
+skeletonhealth = random.randint(9, (13))
+gianthealth = random.randint(18, (25))
+wizardhealth = random.randint(17, (20))
+witchhealth = random.randint(15, (20))
+bandithealth = random.randint(13, (17))
+trollhealth = random.randint(15, (23))
+bearhealth = random.randint(15, (20))
+spiderhealth = random.randint(9, (14))
+dragonhealth = random.randint(30, (50))
+vampirehealth = random.randint(16, (20))
+zombiehealth = random.randint(5, (10))
+werewolfhealth = random.randint(13, (16))
+
 
 # ------------------------------------------------------------------------------------------------------------------------ Enemy Damage
+skeletondamage = random.randint(0, 9)
+giantdamage = random.randint(0, 9)
+wizarddamage = random.randint(0, 9)
+witchdamage = random.randint(0, 9)
+banditdamage = random.randint(0, 9)
+trolldamage = random.randint(0, 9)
+beardamage = random.randint(0, 9)
+spiderdamage = random.randint(0, 9)
+dragondamage = random.randint(0, 9)
+vampiredamage = random.randint(0, 9)
+zombiedamage = random.randint(0, 9)
+werewolfdamage = random.randint(0, 9)
+
 
 # ------------------------------------------------------------------------------------------------------------------------ Save game
 def save():
@@ -795,44 +813,76 @@ def begin():
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Random Event Generator
-def quest():
-    quests = ["1", "2", "3", "4", "5", "8", "6", "7", "8", "8", "9", "10", "11", "12", "13", "14", "4", "4", "15", "16",
-              "17", "17", "17"]
+def quest(level):
+    quests = ["1", "1", "1", "1", "1", "1",                                                                                # Skeleton
+              "2", "2", "2", "2", "2", "2", "2",                                                                           # Cave
+              "3", "3", "3",                                                                                               # Wizard
+              "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4",                                                       # Village
+              "5", "5", "5",                                                                                               # Witch
+              "6", "6", "6", "6", "6",                                                                                     # Forest
+              "7", "7", "7",                                                                                               # Bandits
+              "8", "8", "8", "8", "8", "8",                                                                                # Chest
+              "9", "9",                                                                                                    # Troll
+              "10", "10",                                                                                                  # Bear
+              "11", "11", "11", "11",                                                                                      # Spider
+              "12",                                                                                                        # Dragon
+              "13", "13", "13",                                                                                            # Vampire
+              "14", "14", "14", "14", "14", "14", "14",                                                                    # Zombie
+              "15", "15",                                                                                                  # Werewolf
+              "16", "16",                                                                                                  # Giant
+              "17", "17", "17", "17", "17", "17", "17", "17", "17", "17", "17", "17", "17", "17", "17", "17", "17", "17"]  # Crossroads
     questchoice = secrets.choice(quests)
     questlevel = questchoice
     if questchoice == "1":
+        level += 1
         skeleton(whack)
     elif questchoice == "2":
+        level += 1
         cave()
     elif questchoice == "3":
         wizard(basehealth, whack)
+        level += 1
     elif questchoice == "4":
+        level += 1
         village()
     elif questchoice == "5":
+        level += 1
         witch(whack)
     elif questchoice == "6":
+        level += 1
         forest()
     elif questchoice == "7":
+        level += 1
         bandits(whack)
     elif questchoice == "8":
+        level += 1
         chest()
     elif questchoice == "9":
+        level += 1
         troll(whack)
     elif questchoice == "10":
+        level += 1
         bear(whack)
     elif questchoice == "11":
+        level += 1
         spider(whack)
     elif questchoice == "12":
+        level += 1
         dragon(whack)
     elif questchoice == "13":
+        level += 1
         vampire(whack)
     elif questchoice == "14":
+        level += 1
         zombie(whack)
     elif questchoice == "15":
+        level += 1
         werewolf(whack)
     elif questchoice == "16":
+        level += 1
         giant(whack)
     elif questchoice == "17":
+        level += 1
         crossroads()
 
 # ----------------------------------------------------------------------------------------------------------------------- Begin
