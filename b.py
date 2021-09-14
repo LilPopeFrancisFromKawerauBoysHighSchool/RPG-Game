@@ -1,5 +1,6 @@
 import secrets
 import pickle
+import random
 # ------------------------------------------------------------------------------------------------------------------------ Variables
 money = 0
 charactertype = 'null'
@@ -25,6 +26,21 @@ bartermult = price - (bartermultpoints * 2)
 whack = damagemult + magicmult + rangedmult + damage
 data = {whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money, questchoice, questlevel}
 
+# ------------------------------------------------------------------------------------------------------------------------ Enemy Health
+skeletonhealth = random.randint(0, 9)
+gianthealth = random.randint(0, 9)
+wizardhealth = random.randint(0, 9)
+witchhealth = random.randint(0, 9)
+bandithealth = random.randint(0, 9)
+trollhealth = random.randint(0, 9)
+bearhealth = random.randint(0, 9)
+spiderhealth = random.randint(0, 9)
+dragonhealth = random.randint(0, 9)
+vampirehealth = random.randint(0, 9)
+zombiehealth = random.randint(0, 9)
+werewolfhealth = random.randint(0, 9)
+
+# ------------------------------------------------------------------------------------------------------------------------ Enemy Damage
 
 # ------------------------------------------------------------------------------------------------------------------------ Save game
 def save():
@@ -818,7 +834,6 @@ def quest():
         giant(whack)
     elif questchoice == "17":
         crossroads()
-
 
 # ----------------------------------------------------------------------------------------------------------------------- Begin
 print("Welcome to the Game!")
