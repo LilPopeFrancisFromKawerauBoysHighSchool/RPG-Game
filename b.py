@@ -6,6 +6,7 @@ import random
 # ------------------------------------------------------------------------------------------------------------------------ Variables
 money = 0
 level = 0
+difficulty = (level) * 1.25
 charactertype = 'null'
 name = 'null'
 questchoice = '1'
@@ -29,35 +30,60 @@ bartermult = price - (bartermultpoints * 2)
 whack = damagemult + magicmult + rangedmult + damage
 data = {level, whack, bartermult, totalhealth, rangedmult, magicmult, damagemult, bartermultpoints, healthmultpoints, rangedmultpoints, magicmultpoints, damagemultpoints, resetpoints, damage, armor, basehealth, points, price, money, questchoice, questlevel}
 
+global money
+global level
+global difficulty
+global charactertype
+global name
+global questchoice
+global questlevel
+global price
+global points
+global basehealth
+global armor
+global damage
+global resetpoints
+global damagemultpoints
+global magicmultpoints
+global rangedmultpoints
+global healthmultpoints
+global bartermultpoints
+global damagemult
+global magicmult
+global rangedmult
+global totalhealth
+global bartermult
+global whack
+global data
 
 # ------------------------------------------------------------------------------------------------------------------------ Enemy Health
-skeletonhealth = random.randint(9, (13))
-gianthealth = random.randint(18, (25))
-wizardhealth = random.randint(17, (20))
-witchhealth = random.randint(15, (20))
-bandithealth = random.randint(13, (17))
-trollhealth = random.randint(15, (23))
-bearhealth = random.randint(15, (20))
-spiderhealth = random.randint(9, (14))
-dragonhealth = random.randint(30, (50))
-vampirehealth = random.randint(16, (20))
-zombiehealth = random.randint(5, (10))
-werewolfhealth = random.randint(13, (16))
+skeletonhealth = random.randint(9*(difficulty), (13*(difficulty)))
+gianthealth = random.randint(18*(difficulty), (25*(difficulty)))
+wizardhealth = random.randint(17*(difficulty), (20*(difficulty)))
+witchhealth = random.randint(15*(difficulty), (20*(difficulty)))
+bandithealth = random.randint(13*(difficulty), (17*(difficulty)))
+trollhealth = random.randint(15*(difficulty), (23*(difficulty)))
+bearhealth = random.randint(15*(difficulty), (20*(difficulty)))
+spiderhealth = random.randint(9*(difficulty), (14*(difficulty)))
+dragonhealth = random.randint(30*(difficulty), (50*(difficulty)))
+vampirehealth = random.randint(16*(difficulty), (20*(difficulty)))
+zombiehealth = random.randint(5*(difficulty), (10*(difficulty)))
+werewolfhealth = random.randint(13*(difficulty), 16*(difficulty))
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Enemy Damage
-skeletondamage = random.randint(0, 9)
-giantdamage = random.randint(0, 9)
-wizarddamage = random.randint(0, 9)
-witchdamage = random.randint(0, 9)
-banditdamage = random.randint(0, 9)
-trolldamage = random.randint(0, 9)
-beardamage = random.randint(0, 9)
-spiderdamage = random.randint(0, 9)
-dragondamage = random.randint(0, 9)
-vampiredamage = random.randint(0, 9)
-zombiedamage = random.randint(0, 9)
-werewolfdamage = random.randint(0, 9)
+skeletondamage = random.randint(0, (9*difficulty))
+giantdamage = random.randint(0, (9*difficulty))
+wizarddamage = random.randint(0, (9*difficulty))
+witchdamage = random.randint(0, (9*difficulty))
+banditdamage = random.randint(0, (9*difficulty))
+trolldamage = random.randint(0, (9*difficulty))
+beardamage = random.randint(0, (9*difficulty))
+spiderdamage = random.randint(0, (9*difficulty))
+dragondamage = random.randint(0, (9*difficulty))
+vampiredamage = random.randint(0, (9*difficulty))
+zombiedamage = random.randint(0, (9*difficulty))
+werewolfdamage = random.randint(0, (9*difficulty))
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Save game
@@ -150,6 +176,7 @@ def characterchoice(charactertype):
         money = 100
         armor = 2
         points = 5
+        level = 0
         print("\nCharacter Class Selected: ", charactertype)
         print("Damage:", damage)
         print("Health:", basehealth)
@@ -173,6 +200,7 @@ def characterchoice(charactertype):
         money = 100
         armor = 2
         points = 5
+        level = 0
         print("\nCharacter Class Selected: ", charactertype)
         print("Damage:", damage)
         print("Health:", basehealth)
@@ -196,6 +224,7 @@ def characterchoice(charactertype):
         money = 100
         armor = 2
         points = 5
+        level = 0
         print("\nCharacter Class Selected: ", charactertype)
         print("Damage:", damage)
         print("Health:", basehealth)
@@ -219,6 +248,7 @@ def characterchoice(charactertype):
         money = 100
         armor = 2
         points = 5
+        level = 0
         print("\nCharacter Class Selected: ", charactertype)
         print("Damage:", damage)
         print("Health:", basehealth)
@@ -480,6 +510,7 @@ def skills(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints
 
 # ------------------------------------------------------------------------------------------------------------------------Random Events/ Story
 def villageenter(damagemultpoints, magicmultpoints, rangedmultpoints, healthmultpoints, bartermultpoints, points, damagemult, magicmult, rangedmult, totalhealth, bartermult, resetpoints, whack, damage, basehealth, money):
+    level += 1
     save()
     print("In the village you find a \n1. Blacksmith \n2. General Store \n3. Healer \n4. an Inn")
     option = input("Which option do you choose? : ")
@@ -499,6 +530,7 @@ def villageenter(damagemultpoints, magicmultpoints, rangedmultpoints, healthmult
 
 # ------------------------------------------------------------------------------------------------------------------------ Skeleton Event
 def skeleton(whack):
+    level += 1
     save()
     print("\nYou encounter a horde of undead skeletons... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -516,6 +548,7 @@ def skeleton(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Cave Event
 def cave():
+    level += 1
     save()
     print("\nYour path leads you to a large cave... \nDo you?\n1. Enter?\n2. Flee?\n")
     option = input("Which option do you choose? : ")
@@ -531,6 +564,7 @@ def cave():
 
 # ------------------------------------------------------------------------------------------------------------------------ Wizard
 def wizard(basehealth, whack):
+    level += 1
     save()
     print("\nYou encounter a wizard in his tower \nDo you?\n1. Flee?\n2. Talk?\n3. Fight")
     option = input("Which option do you choose? : ")
@@ -555,6 +589,7 @@ def wizard(basehealth, whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Village Event
 def village():
+    level += 1
     save()
     print("\nYou reach a village \nDo you?\n1. Enter?\n2. Stay away?\n")
     option = input("Which option do you choose? : ")
@@ -569,6 +604,7 @@ def village():
 
 # ------------------------------------------------------------------------------------------------------------------------ Witch Event
 def witch(whack):
+    level += 1
     save()
     print("\nYou encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -588,6 +624,7 @@ def witch(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Forest Event
 def forest():
+    level += 1
     save()
     print("\nYou reach a forest \nDo you?\n1. Enter?\n2. Go around?\n")
     option = input("Which option do you choose? : ")
@@ -601,6 +638,7 @@ def forest():
 
 # ------------------------------------------------------------------------------------------------------------------------ Bandits Event
 def bandits(whack):
+    level += 1
     save()
     print("\nYou encounter a group of bandits waiting on the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -620,6 +658,7 @@ def bandits(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Chest Event
 def chest():
+    level += 1
     save()
     print("\nYou find a chest on the side of the road... \nDo you?\n1. Open?\n2. Ignore?\n")
     option = input("Which option do you choose? : ")
@@ -639,6 +678,7 @@ def chest():
 
 # ------------------------------------------------------------------------------------------------------------------------ Troll Event
 def troll(whack):
+    level += 1
     save()
     print("\nYou encounter a troll walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -658,6 +698,7 @@ def troll(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Bear Event
 def bear(whack):
+    level += 1
     save()
     print("\nA bear runs out at you from the forest \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -677,6 +718,7 @@ def bear(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Spider Event
 def spider(whack):
+    level += 1
     save()
     print("\nA giant spider scales down from a tree in front of you \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -698,6 +740,7 @@ def spider(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Dragon Event
 def dragon(whack):
+    level += 1
     save()
     print("\nA dragon lands in front of you! \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -718,6 +761,7 @@ def dragon(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Vampire Event
 def vampire(whack):
+    level += 1
     save()
     print("\nA bat flies by... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -739,6 +783,7 @@ def vampire(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Werewolf Event
 def werewolf(whack):
+    level += 1
     save()
     print("\nYou meet a man as the night falls. \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -759,6 +804,7 @@ def werewolf(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Zombie Event
 def zombie(whack):
+    level += 1
     save()
     print("\nYou are ambushed by a group of zombies! The look very weak \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -777,6 +823,7 @@ def zombie(whack):
 
 # ------------------------------------------------------------------------------------------------------------------------ Giant Event
 def giant(whack):
+    level += 1
     save()
     print("\nYou encounter a giant walking across the road... \nDo you?\n1. Flee?\n2. Fight?\n")
     option = input("Which option do you choose? : ")
@@ -813,7 +860,7 @@ def begin():
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Random Event Generator
-def quest(level):
+def quest():
     quests = ["1", "1", "1", "1", "1", "1",                                                                                # Skeleton
               "2", "2", "2", "2", "2", "2", "2",                                                                           # Cave
               "3", "3", "3",                                                                                               # Wizard
@@ -834,55 +881,54 @@ def quest(level):
     questchoice = secrets.choice(quests)
     questlevel = questchoice
     if questchoice == "1":
-        level += 1
         skeleton(whack)
+
     elif questchoice == "2":
-        level += 1
         cave()
+
     elif questchoice == "3":
         wizard(basehealth, whack)
-        level += 1
+
     elif questchoice == "4":
-        level += 1
         village()
+
     elif questchoice == "5":
-        level += 1
         witch(whack)
+
     elif questchoice == "6":
-        level += 1
         forest()
+
     elif questchoice == "7":
-        level += 1
         bandits(whack)
+
     elif questchoice == "8":
-        level += 1
         chest()
+
     elif questchoice == "9":
-        level += 1
         troll(whack)
+
     elif questchoice == "10":
-        level += 1
         bear(whack)
+
     elif questchoice == "11":
-        level += 1
         spider(whack)
+
     elif questchoice == "12":
-        level += 1
         dragon(whack)
+
     elif questchoice == "13":
-        level += 1
         vampire(whack)
+
     elif questchoice == "14":
-        level += 1
         zombie(whack)
+
     elif questchoice == "15":
-        level += 1
         werewolf(whack)
+
     elif questchoice == "16":
-        level += 1
         giant(whack)
+
     elif questchoice == "17":
-        level += 1
         crossroads()
 
 # ----------------------------------------------------------------------------------------------------------------------- Begin
