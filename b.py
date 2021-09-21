@@ -6,7 +6,7 @@ import random
 # ------------------------------------------------------------------------------------------------------------------------ Variables
 money = 0
 level = 0
-difficulty = (level) * 1.25
+difficulty = level * 1.25
 charactertype = 'null'
 name = 'null'
 questchoice = '1'
@@ -57,33 +57,86 @@ global whack
 global data
 
 # ------------------------------------------------------------------------------------------------------------------------ Enemy Health
-skeletonhealth = random.randint(9*(difficulty), (13*(difficulty)))
-gianthealth = random.randint(18*(difficulty), (25*(difficulty)))
-wizardhealth = random.randint(17*(difficulty), (20*(difficulty)))
-witchhealth = random.randint(15*(difficulty), (20*(difficulty)))
-bandithealth = random.randint(13*(difficulty), (17*(difficulty)))
-trollhealth = random.randint(15*(difficulty), (23*(difficulty)))
-bearhealth = random.randint(15*(difficulty), (20*(difficulty)))
-spiderhealth = random.randint(9*(difficulty), (14*(difficulty)))
-dragonhealth = random.randint(30*(difficulty), (50*(difficulty)))
-vampirehealth = random.randint(16*(difficulty), (20*(difficulty)))
-zombiehealth = random.randint(5*(difficulty), (10*(difficulty)))
-werewolfhealth = random.randint(13*(difficulty), 16*(difficulty))
 
+skeletonhealthmin = (float(9)*difficulty)
+gianthealthmin = (float(18)*difficulty)
+wizardhealthmin = (float(17)*difficulty)
+witchhealthmin = (float(15)*difficulty)
+bandithealthmin = (float(13)*difficulty)
+trollhealthmin = (float(15)*difficulty)
+bearhealthmin = (float(15)*difficulty)
+spiderhealthmin = (float(9)*difficulty)
+dragonhealthmin = (float(30)*difficulty)
+vampirehealthmin = (float(16)*difficulty)
+zombiehealthmin = (float(5)*difficulty)
+werewolfhealthmin = (float(13)*difficulty)
+
+skeletonhealthmax = (float(13)*difficulty)
+gianthealthmax = (float(25)*difficulty)
+wizardhealthmax = (float(20)*difficulty)
+witchhealthmax = (float(20)*difficulty)
+bandithealthmax = (float(17)*difficulty)
+trollhealthmax = (float(23)*difficulty)
+bearhealthmax = (float(20)*difficulty)
+spiderhealthmax = (float(14)*difficulty)
+dragonhealthmax = (float(50)*difficulty)
+vampirehealthmax = (float(20)*difficulty)
+zombiehealthmax = (float(10)*difficulty)
+werewolfhealthmax = (float(16)*difficulty)
+
+skeletonhealth = random.randint(float(9)*difficulty), (float(13)*difficulty)
+gianthealth = random.randint(float(18)*difficulty), (float(25)*difficulty)
+wizardhealth = random.randint(float(17)*difficulty), (float(20)*difficulty)
+witchhealth = random.randint(float(15)*difficulty), (float(20)*difficulty)
+bandithealth = random.randint(float(13)*difficulty), (float(17)*difficulty)
+trollhealth = random.randint(float(15)*difficulty), (float(23)*difficulty)
+bearhealth = random.randint(float(15)*difficulty), (float(20)*difficulty)
+spiderhealth = random.randint(float(9)*difficulty), (float(14)*difficulty)
+dragonhealth = random.randint(float(30)*difficulty), (float(50)*difficulty)
+vampirehealth = random.randint(float(16)*difficulty), (float(20)*difficulty)
+zombiehealth = random.randint(float(5)*difficulty), (float(10)*difficulty)
+werewolfhealth = random.randint(float(13)*difficulty), (float(16)*difficulty)
 
 # ------------------------------------------------------------------------------------------------------------------------ Enemy Damage
-skeletondamage = random.randint(0, (9*difficulty))
-giantdamage = random.randint(0, (9*difficulty))
-wizarddamage = random.randint(0, (9*difficulty))
-witchdamage = random.randint(0, (9*difficulty))
-banditdamage = random.randint(0, (9*difficulty))
-trolldamage = random.randint(0, (9*difficulty))
-beardamage = random.randint(0, (9*difficulty))
-spiderdamage = random.randint(0, (9*difficulty))
-dragondamage = random.randint(0, (9*difficulty))
-vampiredamage = random.randint(0, (9*difficulty))
-zombiedamage = random.randint(0, (9*difficulty))
-werewolfdamage = random.randint(0, (9*difficulty))
+
+skeletondamagemin = (float(0)*difficulty)
+giantdamagemin = (float(10)*difficulty)
+wizarddamagemin = (float(6)*difficulty)
+witchdamagemin = (float(6)*difficulty)
+banditdamagemin = (float(3)*difficulty)
+trolldamagemin = (float(8)*difficulty)
+beardamagemin = (float(6)*difficulty)
+spiderdamagemin = (float(4)*difficulty)
+dragondamagemin = (float(12)*difficulty)
+vampiredamagemin = (float(6)*difficulty)
+zombiedamagemin = (float(1)*difficulty)
+werewolfdamagemin = (float(2)*difficulty)
+
+skeletondamagemax = (float(5)*difficulty)
+giantdamagemax = (float(17)*difficulty)
+wizarddamagemax = (float(11)*difficulty)
+witchdamagemax = (float(11)*difficulty)
+banditdamagemax = (float(7)*difficulty)
+trolldamagemax = (float(15)*difficulty)
+beardamagemax = (float(11)*difficulty)
+spiderdamagemax = (float(7)*difficulty)
+dragondamagemax = (float(20)*difficulty)
+vampiredamagemax = (float(11)*difficulty)
+zombiedamagemax = (float(6)*difficulty)
+werewolfdamagemax = (float(11)*difficulty)
+
+skeletondamage = random.randint(skeletondamagemin, skeletondamagemax)
+giantdamage = random.randint(giantdamagemin, giantdamagemax)
+wizarddamage = random.randint(wizarddamagemin, wizarddamagemax)
+witchdamage = random.randint(witchdamagemin, witchdamagemax)
+banditdamage = random.randint(banditdamagemin, banditdamagemax)
+trolldamage = random.randint(trolldamagemin, trolldamagemax)
+beardamage = random.randint(float(6)*difficulty), (float(11)*difficulty)
+spiderdamage = random.randint(float(4)*difficulty), (float(7)*difficulty)
+dragondamage = random.randint(float(12)*difficulty), (float(20)*difficulty)
+vampiredamage = random.randint(float(6)*difficulty), (float(11)*difficulty)
+zombiedamage = random.randint(float(1)*difficulty), (float(6)*difficulty)
+werewolfdamage = random.randint(float(2)*difficulty), (float(11)*difficulty)
 
 
 # ------------------------------------------------------------------------------------------------------------------------ Save game
